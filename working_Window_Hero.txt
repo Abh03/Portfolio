@@ -1,0 +1,96 @@
+"use client"
+
+import { useEffect, useState } from "react"
+
+export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isComplete: boolean) => void }) {
+  const [scrollY, setScrollY] = useState(0);
+  const [windowHeight, setWindowHeight] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+    setWindowHeight(window.innerHeight);
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const maxScroll = windowHeight * 2;
+  const scrollProgress = maxScroll > 0 ? Math.min(scrollY / maxScroll, 1) : 0;
+  const fontSize = Math.max(600 - scrollProgress * 600, 4);
+  const overlayOpacity = scrollY > 10 ? 1 : 0;
+  const finalTitleOpacity = scrollProgress > 0.95 
+    ? 1 - (scrollProgress - 0.95) * 20 
+    : 1;
+
+  useEffect(() => {
+    if (onAnimationComplete) {
+      onAnimationComplete(scrollProgress >= 1);
+    }
+  }, [scrollProgress, onAnimationComplete]);
+
+
+  if (!isMounted) {
+    return <div style={{ height: "300vh" }} />;
+  }
+
+  return (
+    <div className="sticky top-0 h-[300vh]">
+      {/* Layer 1: Fixed Background Image */}
+      <div
+        className="fixed top-0 left-0 w-screen h-screen z-0"
+        style={{
+          backgroundImage: `url('/light-tech-circuit.png')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
+
+      {/* Layer 2: Dark overlay with text cutout */}
+      <div 
+        className="fixed top-0 left-0 w-screen h-screen z-10" 
+        style={{ 
+          backgroundColor: "#0A0A14",
+          opacity: overlayOpacity,
+          transition: "opacity 0.3s ease-in-out"
+        }}
+      >
+        {/* --- THIS IS THE FIX --- */}
+        <div 
+          className="absolute inset-0 flex items-center justify-center"
+          // Add this style to shift the position
+        >
+          <h1
+            className="font-black leading-none text-center select-none pointer-events-none"
+            style={{
+              fontSize: `${fontSize}vw`,
+              opacity: 1,
+              backgroundImage: `url('/light-tech-circuit.png')`,
+              backgroundAttachment: "fixed",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              color: "transparent",
+            }}
+          >
+            <div className="block">Abhyudit</div>
+            <div className="block">Adhikari</div>
+          </h1>
+        </div>
+      </div>
+
+      {/* Final positioned title */}
+      {scrollProgress > 0.9 && (
+        <div 
+          className="fixed top-8 left-1/2 transform -translate-x-1/2 z-20"
+        >
+          <h1 className="text-4xl font-black text-[#00FFFF] text-center">Abhyudit Adhikari</h1>
+          <p className="text-[#E5E7EB] text-center mt-2">Final-Year Computer Engineering Student, ML Enthusiast</p>
+        </div>
+      )}
+    </div>
+  )
+}

@@ -1,0 +1,142 @@
+"use client"
+
+import { useEffect, useState, useRef } from "react"
+
+export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isComplete: boolean) => void }) {
+  const [scrollY, setScrollY] = useState(0)
+  const [windowHeight, setWindowHeight] = useState(0)
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [images, setImages] = useState<HTMLImageElement[]>([]);
+  const totalFrames = 72; // Make sure this matches your frame count
+  const [currentFrameSrc, setCurrentFrameSrc] = useState<string>('');
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+    // Pre-loading logic...
+    const loadedImages: HTMLImageElement[] = [];
+    let loadedCount = 0;
+    setCurrentFrameSrc('/frames/frame_001.png');
+    for (let i = 1; i <= totalFrames; i++) {
+      const img = new Image();
+      const frameNumber = i.toString().padStart(3, '0');
+      img.src = `/frames/frame_${frameNumber}.png`;
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === totalFrames) {
+          console.log("All frames loaded successfully!");
+          setImages(loadedImages);
+        }
+      };
+      loadedImages.push(img);
+    }
+  }, [totalFrames]);
+
+  useEffect(() => {
+    setWindowHeight(window.innerHeight)
+    const handleScroll = () => setScrollY(window.scrollY)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+  
+  const animationSpeedMultiplier = 2;
+  const maxScroll = windowHeight * animationSpeedMultiplier;
+  const scrollProgress = maxScroll > 0 ? Math.min(scrollY / maxScroll, 1) : 0;
+  const videoSplitPoint = 0.7;
+  
+  const fontProgress = Math.max(0, (scrollProgress - videoSplitPoint) / (1 - videoSplitPoint));
+  const fontSize = Math.max(800 - fontProgress * 800, 4);
+  
+  const fadeInStartPoint = 0.65; 
+  let overlayOpacity;
+  if (scrollProgress < fadeInStartPoint) {
+    overlayOpacity = 0;
+  } else if (scrollProgress < videoSplitPoint) {
+    overlayOpacity = (scrollProgress - fadeInStartPoint) / (videoSplitPoint - fadeInStartPoint);
+  } else {
+    overlayOpacity = 1;
+  }
+  
+  const finalTitleOpacity = Math.min(1, fontProgress * 10) - Math.max(0, (fontProgress - 0.9) * 10);
+
+  // --- START OF NEW LOGIC ---
+  // Calculate opacity and position for the initial welcome text
+  const welcomeTextOpacity = 1 - Math.min(scrollProgress * 5, 1); // Fades out in the first 20% of the scroll
+  const welcomeTextTranslateY = -scrollProgress * 200; // Moves up as you scroll
+  // --- END OF NEW LOGIC ---
+
+  useEffect(() => {
+    if (onAnimationComplete) {
+      onAnimationComplete(scrollProgress >= 1);
+    }
+  }, [scrollProgress, onAnimationComplete]);
+
+  useEffect(() => {
+    if (!isMounted || images.length !== totalFrames || !canvasRef.current) return;
+    const canvas = canvasRef.current;
+    const context = canvas.getContext('2d');
+    const frameIndex = Math.floor(scrollProgress * (totalFrames - 1));
+    const img = images[frameIndex];
+
+    if (context && img && img.complete) {
+      setCurrentFrameSrc(img.src);
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(img, 0, 0, canvas.width, canvas.height);
+    }
+  }, [scrollProgress, images, totalFrames, isMounted]);
+
+  if (!isMounted) {
+    return <div style={{ height: `${windowHeight * animationSpeedMultiplier}px` }} />;
+  }
+
+  return (
+    <div className="sticky top-0" style={{ height: `${maxScroll}px`}}> 
+      <canvas
+        ref={canvasRef}
+        width="1920"
+        height="1080"
+        className="fixed top-0 left-0 w-screen h-screen z-0 object-cover"
+      />
+
+
+
+      <div 
+        className="fixed top-0 left-0 w-screen h-screen z-10 transition-opacity" 
+        style={{ 
+          backgroundColor: "#000000",
+          opacity: overlayOpacity, 
+        }}
+      >
+        <div className="absolute inset-0 flex items-center justify-center">
+          <h1
+            className="font-black leading-none text-center select-none pointer-events-none"
+            style={{
+              fontSize: `${fontSize}vw`,
+              opacity: 1,
+              backgroundImage: `url(${currentFrameSrc})`,
+              backgroundAttachment: "fixed",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              color: "transparent",
+            }}
+          >
+            <div className="block">Abhyudit</div>
+            <div className="block">Adhikari</div>
+          </h1>
+        </div>
+      </div>
+      {fontProgress > 0.8 && (
+        <div 
+          className="fixed top-8 left-1/2 transform -translate-x-1/2 z-20"
+          style={{opacity: finalTitleOpacity}}
+        >
+          <h1 className="text-4xl font-black text-[#00FFFF] text-center">Abhyudit Adhikari</h1>
+          <p className="text-[#E5E7EB] text-center mt-2">Final-Year Computer Engineering Student, ML Enthusiast</p>
+        </div>
+      )}
+    </div>
+  )
+}
