@@ -156,8 +156,8 @@ export function ExperienceSection() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2
-              className="text-4xl md:text-5xl font-bold mb-6"
-              style={{ color: "#00FFFF" }}
+              className="text-5xl md:text-5xl font-bold mb-6"
+              style={{ fontFamily: "'Thiket'", color: "#00FFFF" }}
             >
               Career Timeline
             </h2>
@@ -287,8 +287,8 @@ export function ExperienceSection() {
 
           <div className="mt-20">
             <h3
-              className="text-4xl font-bold text-center mb-8"
-              style={{ color: "#00FFFF" }}
+              className="text-5xl font-bold text-center mb-8"
+              style={{ fontFamily: "'Thiket'", color: "#00FFFF" }}
             >
               Recognitions
             </h3>

@@ -206,7 +206,7 @@ export function ProjectsSection() {
       />
       
       <div className="max-w-6xl mx-auto text-center mb-16">
-        <h2 className="text-4xl font-bold" style={{ color: "#00FFFF" }}>
+        <h2 className="text-5xl font-bold" style={{ fontFamily: "'Thiket'",color: "#00FFFF" }}>
           Featured Projects
         </h2>
       </div>
@@ -217,7 +217,8 @@ export function ProjectsSection() {
         // --- THIS IS THE FIX ---
         style={{ height: containerHeight }}
       >
-        <div className="sticky top-0 h-screen flex justify-center gap-15 overflow-hidden"
+        <div
+          className="sticky top-0 h-screen flex justify-center overflow-hidden gap-4 md:gap-15"
         >
           <motion.div className="w-full md:w-1/3" style={{ y: yLeft }}>
             {loopedLeft.map((project, index) => (

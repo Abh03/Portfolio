@@ -87,7 +87,7 @@ export function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* About Me Text Content */}
           <div className="space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: "#00FFFF" }}>
+            <h2 className="text-5xl md:text-5xl font-bold mb-6" style={{ fontFamily: "'Thiket'", color: "#00FFFF" }}>
               About Me
             </h2>
             <div className="space-y-6 text-lg leading-relaxed" style={{ color: "#E5E7EB" }}>
@@ -121,7 +121,7 @@ export function AboutSection() {
 
           {/* Interactive Skills Grid */}
           <div>
-            <h3 className="text-3xl font-bold mb-8" style={{ color: "#E5E7EB" }}>
+            <h3 className="text-4xl font-bold mb-8" style={{fontFamily: "'Thiket'", color: "#E5E7EB" }}>
               Technical Skills
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">

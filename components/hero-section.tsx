@@ -33,6 +33,16 @@ export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isC
   const [scrollY, setScrollY] = useState(0);
   const [windowHeight, setWindowHeight] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
+  // Inside your HeroSection component, with the other useState hooks
+const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkDeviceType = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkDeviceType();
+    window.addEventListener('resize', checkDeviceType);
+    return () => window.removeEventListener('resize', checkDeviceType);
+  }, []);
 
   useEffect(() => {
     setIsMounted(true);
@@ -42,7 +52,7 @@ export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isC
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const maxScroll = windowHeight * 2;
+  const maxScroll = windowHeight * 1.5;
   const scrollProgress = maxScroll > 0 ? Math.min(scrollY / maxScroll, 1) : 0;
   
   const fontSize = Math.max(900 - scrollProgress * 900, 9); 
@@ -51,6 +61,7 @@ export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isC
   const finalTitleOpacity = scrollProgress > 0.95 
     ? 1 - (scrollProgress - 0.95) * 20 
     : 1; 
+    
     
   const typewriterOpacity = Math.max(1 - scrollProgress*1.5, 0);
 
@@ -67,6 +78,9 @@ export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isC
     }
   }, [scrollProgress, onAnimationComplete]);
 
+  const backgroundImageUrl = isMobile
+    ? '/light-tech-circuit-mobile.png'
+    : '/light-tech-circuit.png';
 
   if (!isMounted) {
     return <div style={{ height: "300vh" }} />;
@@ -78,7 +92,7 @@ export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isC
       <div
         className="fixed top-0 left-0 w-screen h-screen z-0"
         style={{
-          backgroundImage: `url('/light-tech-circuit.png')`,
+          backgroundImage: `url('${backgroundImageUrl}')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -118,11 +132,11 @@ export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isC
             className="font-black leading-none text-center select-none pointer-events-none"
             style={{
               fontSize: `${fontSize}vw`,
-                            fontFamily: "'Pricedown'", // Apply the Pricedown font
+              fontFamily: "'Gore'", // Apply the Gore font
 
               marginTop: `${textMarginTop}vh`,
               opacity: 1,
-              backgroundImage: `url('/light-tech-circuit.png')`,
+              backgroundImage: `url('${backgroundImageUrl}')`,
               backgroundAttachment: "fixed",
               backgroundSize: "cover",
               backgroundPosition: "center",
@@ -143,7 +157,7 @@ export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isC
           className="fixed bottom-85 left-1/2 transform -translate-x-1/2 z-30"
           style={{  }}
         >
-          <h1 className="text-4xl font-black text-[#00FFFF] text-center"></h1>
+          <h1 className="text-5xl font-black text-[#00FFFF] text-center"></h1>
         </div>
       )}
     </div>

@@ -87,7 +87,7 @@ export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isC
         <div 
           className="fixed top-8 left-1/2 transform -translate-x-1/2 z-20"
         >
-          <h1 className="text-4xl font-black text-[#00FFFF] text-center">Abhyudit Adhikari</h1>
+          <h1 className="text-5xl font-black text-[#00FFFF] text-center">Abhyudit Adhikari</h1>
           <p className="text-[#E5E7EB] text-center mt-2">Final-Year Computer Engineering Student, ML Enthusiast</p>
         </div>
       )}

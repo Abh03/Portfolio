@@ -118,8 +118,8 @@ export function ContactSection() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-16">
             <h2
-              className="text-4xl md:text-5xl font-bold mb-6"
-              style={{ color: "#00FFFF" }}
+              className="text-5xl md:text-5xl font-bold mb-6"
+              style={{ fontFamily: "'Thiket'", color: "#00FFFF" }}
             >
               Let's Build the Future
             </h2>
