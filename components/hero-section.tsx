@@ -50,7 +50,7 @@ export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isC
   
   const finalTitleOpacity = scrollProgress > 0.95 
     ? 1 - (scrollProgress - 0.95) * 20 
-    : 1;
+    : 1; 
     
   const typewriterOpacity = Math.max(1 - scrollProgress*1.5, 0);
 
@@ -61,7 +61,6 @@ export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isC
     ? (scrollProgress - 0.8) * 5 
     : 0;
   // --- END OF NEW LOGIC ---
-
   useEffect(() => {
     if (onAnimationComplete) {
       onAnimationComplete(scrollProgress >= 1);
@@ -119,6 +118,8 @@ export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isC
             className="font-black leading-none text-center select-none pointer-events-none"
             style={{
               fontSize: `${fontSize}vw`,
+                            fontFamily: "'Pricedown'", // Apply the Pricedown font
+
               marginTop: `${textMarginTop}vh`,
               opacity: 1,
               backgroundImage: `url('/light-tech-circuit.png')`,
