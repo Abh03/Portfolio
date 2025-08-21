@@ -78,7 +78,7 @@ export function ContactSection() {
 
   const socialLinks = [
     { label: "LinkedIn", url: "https://linkedin.com/in/abhyudit-adhikari", icon: LinkedinIcon },
-    { label: "GitHub", url: "https://github.com/Abh03", icon: GithubIcon },
+    // { label: "GitHub", url: "https://github.com/Abh03", icon: GithubIcon },
   ];
 
   return (
