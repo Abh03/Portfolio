@@ -55,7 +55,7 @@ const experiences = [
 
 const recognitions = [
   {
-    title: "ICT Award Rising Star 2024 Finalist",
+    title: "Finalist, ICT Award Rising Star 2024 (Dr. Fish)",
     organization: "ICT Foundation",
     image: "/ict-award-finalist.png",
   },
@@ -63,6 +63,16 @@ const recognitions = [
     title: "The Duke of Edinburgh's International Award",
     organization: "The Duke of Edinburgh's International Award Foundation",
     image: "/duke-of-edinburgh-award.jpg",
+  },
+    {
+    title: "Digital Innovation in Agriculture and Logistics(DIAL) Accelerator Program",
+    organization: "Aadhyanta Fund Management & Swiss Agency for Development and Cooperation(SDC)",
+    image: "/aadhyanta.jpg",
+  },
+      {
+    title: "Graduate, Universal Concept of Mental Arithmetic System (UCMAS)",
+    organization: "UCMAS Nepal",
+    image: "/ucmas.png",
   },
 ];
 

@@ -175,6 +175,7 @@ export function ProjectsSection() {
 
   const yLeft = useTransform(scrollYProgress, [0, 1], [0, -leftColumnHeight]);
   const yRight = useTransform(scrollYProgress, [0, 1], [-rightColumnHeight, 0]);
+  
 
   return (
     <section
