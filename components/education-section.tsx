@@ -8,12 +8,14 @@ const educationData = [
     degree: "Advanced Engineering Program in AI Agent Workflows & Agentic Systems",
     institution: "IIT Madras Pravartak",
     period: "Mar 2026 – Oct 2026 (expected)",
+    logo: "/placeholder-logo.png",
     description: "Intensive program focused on designing and implementing autonomous AI agents and complex agentic workflows using state-of-the-art frameworks.",
   },
   {
     degree: "Bachelor of Engineering: Computer Engineering",
     institution: "Kathmandu University",
     period: "Feb 2022 – June 2026 (expected)",
+    logo: "/kucc-logo.png",
     description: "Specializing in software engineering, machine learning, and system design. Actively involved in technical clubs and research projects.",
   }
 ];
@@ -114,20 +116,32 @@ export function EducationSection() {
                 boxShadow: `0 0 20px ${themeColor}11`,
               }}
             >
-              <div className="flex justify-between items-start mb-4">
-                <span 
-                  className="text-xs font-bold uppercase tracking-wider px-2 py-1 rounded"
-                  style={{ backgroundColor: `${dateColor}22`, color: dateColor, border: `1px solid ${dateColor}44` }}
-                >
-                  {edu.period}
-                </span>
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-white flex items-center justify-center flex-shrink-0 border border-gray-200 mt-1">
+                  <img
+                    src={edu.logo}
+                    alt={`${edu.institution} logo`}
+                    className="w-10 h-10 object-contain"
+                  />
+                </div>
+                <div className="flex-grow">
+                  <h3 className="text-xl font-bold group-hover:text-white transition-colors mb-2" style={{ color: "#E5E7EB" }}>
+                    {edu.degree}
+                  </h3>
+                  <div className="flex flex-wrap items-center gap-4">
+                    <p className="font-medium text-lg" style={{ color: themeColor }}>
+                      {edu.institution}
+                    </p>
+                    <span 
+                      className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded"
+                      style={{ backgroundColor: `${dateColor}22`, color: dateColor, border: `1px solid ${dateColor}44` }}
+                    >
+                      {edu.period}
+                    </span>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-2xl font-bold mb-2 group-hover:text-white transition-colors" style={{ color: "#E5E7EB" }}>
-                {edu.degree}
-              </h3>
-              <p className="text-xl font-medium mb-4" style={{ color: themeColor }}>
-                {edu.institution}
-              </p>
+
               <p className="text-lg leading-relaxed" style={{ color: "#9CA3AF" }}>
                 {edu.description}
               </p>

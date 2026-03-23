@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 const publication = {
   title: "Real-time Assistive Navigation System for the Visually Impaired",
   status: "Co-authored Research",
+  logo: "/placeholder-logo.png",
   description: "A comprehensive framework designed to assist visually impaired individuals in indoor navigation using cutting-edge computer vision and natural language processing.",
   achievements: [
     "Integrated YOLOv12 for precise real-time object detection and MediaPipe for human pose estimation.",
@@ -108,16 +109,25 @@ export function PublicationsSection() {
             }}
           >
             <div className="flex flex-col md:flex-row md:items-start justify-between mb-6 gap-4">
-              <div>
-                <h3 className="text-2xl font-bold mb-2" style={{ color: "#E5E7EB" }}>
-                  {publication.title}
-                </h3>
-                <p className="font-medium text-lg" style={{ color: "#00FFFF" }}>
-                  {publication.status}
-                </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-white flex items-center justify-center flex-shrink-0 border border-gray-200">
+                  <img
+                    src={publication.logo}
+                    alt="Publication logo"
+                    className="w-10 h-10 object-contain"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold mb-1" style={{ color: "#E5E7EB" }}>
+                    {publication.title}
+                  </h3>
+                  <p className="font-medium text-lg" style={{ color: "#00FFFF" }}>
+                    {publication.status}
+                  </p>
+                </div>
               </div>
               <div
-                className="px-3 py-1 rounded text-sm font-semibold self-start"
+                className="px-3 py-1 rounded text-sm font-semibold self-start whitespace-nowrap"
                 style={{ border: "1px solid #9F2B68", color: "#9F2B68" }}
               >
                 Published Research
