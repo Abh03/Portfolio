@@ -128,12 +128,12 @@ export function EducationSection() {
                   <h3 className="text-xl font-bold group-hover:text-white transition-colors mb-2" style={{ color: "#E5E7EB" }}>
                     {edu.degree}
                   </h3>
-                  <div className="flex flex-wrap items-center gap-4">
+                  <div className="flex justify-between items-center gap-4">
                     <p className="font-medium text-lg" style={{ color: themeColor }}>
                       {edu.institution}
                     </p>
                     <span 
-                      className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded"
+                      className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded flex-shrink-0"
                       style={{ backgroundColor: `${dateColor}22`, color: dateColor, border: `1px solid ${dateColor}44` }}
                     >
                       {edu.period}
