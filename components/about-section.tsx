@@ -1,17 +1,41 @@
 // Add useEffect and useRef to your imports
 import { useState, useEffect, useRef } from "react";
 
-// Define the skills with their descriptions
-const skills = [
-  { name: "Python", description: "Primary language for ML development and data analysis." },
-  { name: "PyTorch", description: "Core deep learning framework for building and training neural networks." },
-  { name: "Deep Learning", description: "Specialized in CNNs for computer vision and sequence models." },
-  { name: "Computer Vision", description: "Experience in image classification, object detection, and medical imaging." },
-  { name: "Django", description: "Used for deploying ML models and building robust backends." },
-  { name: "React.js", description: "Building interactive and responsive user interfaces for web applications." },
-  { name: "SQL", description: "Proficient in database querying and data manipulation." },
-  { name: "Git & GitHub", description: "Essential tools for version control and collaborative development." },
+// Define the skills categorized for rendering
+const skillCategories = [
+  {
+    title: "Languages",
+    skills: [
+      { name: "Python", description: "Primary language for ML development, data analysis, and backend services." },
+      { name: "SQL", description: "Proficient in database design, querying, and data manipulation." },
+    ]
+  },
+  {
+    title: "AI & Machine Learning",
+    skills: [
+      { name: "PyTorch", description: "Core deep learning framework for building and training neural networks." },
+      { name: "TensorFlow", description: "Experience in building and deploying machine learning models." },
+      { name: "OpenCV", description: "Library for computer vision tasks like image processing and object detection." },
+      { name: "RAG Pipelines", description: "Building Retrieval-Augmented Generation systems for LLMs." },
+      { name: "LLM APIs (Gemini, OpenAI)", description: "Integrating state-of-the-art large language models into applications." },
+      { name: "CNNs", description: "Deep learning architecture specialized for image and spatial data processing." },
+    ]
+  },
+  {
+    title: "Backend & Infrastructure",
+    skills: [
+      { name: "FastAPI", description: "Modern, high-performance web framework for building APIs with Python." },
+      { name: "Docker", description: "Containerization tool for consistent deployment across different environments." },
+      { name: "Git", description: "Essential tool for version control and collaborative development." },
+      { name: "Supabase", description: "Backend-as-a-service for database, auth, and real-time features." },
+      { name: "Vector Database", description: "Storing and searching high-dimensional embeddings for AI applications." },
+      { name: "AWS", description: "Cloud platform for deploying and scaling machine learning workloads." },
+    ]
+  }
 ];
+
+// Flat list for easy searching of descriptions
+const allSkills = skillCategories.flatMap(category => category.skills);
 
 export function AboutSection() {
   const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
@@ -84,7 +108,7 @@ export function AboutSection() {
       {/* --- END OF CHANGES --- */}
       
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="flex flex-col gap-16">
           {/* About Me Text Content */}
           <div className="space-y-8">
             <h2 className="text-5xl md:text-5xl font-bold mb-6" style={{ fontFamily: "'Thiket'", color: "#00FFFF" }}>
@@ -124,36 +148,46 @@ export function AboutSection() {
             <h3 className="text-4xl font-bold mb-8" style={{fontFamily: "'Thiket'", color: "#E5E7EB" }}>
               Technical Skills
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {skills.map((skill) => (
-                <div
-                  key={skill.name}
-                  className="p-4 rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105"
-                  style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.05)",
-                    border: "1px solid rgba(255, 255, 255, 1)",
-                  }}
-                  onClick={() =>
-                    setSelectedSkill(
-                      selectedSkill === skill.name ? null : skill.name
-                    )
-                  }
-                  onMouseEnter={e => {
-                    (e.currentTarget as HTMLDivElement).style.backgroundColor = "rgba(182, 182, 182, 0.5)";
-                  }}
-                  onMouseLeave={e => {
-                    (e.currentTarget as HTMLDivElement).style.backgroundColor = "rgba(255, 255, 255, 0.05)";
-                  }}
-                >
-                  <span
-                    className="w-full block text-center py-1 px-2 rounded-md"
-                    style={{
-                      backgroundColor: "rgba(182, 182, 182, 1)",
-                      color: "#000000ff",
-                    }}
-                  >
-                    {skill.name}
-                  </span>
+            
+            <div className="space-y-8">
+              {skillCategories.map((category) => (
+                <div key={category.title}>
+                  <h4 className="text-xl font-semibold mb-4" style={{ color: "#00FFFF", opacity: 0.9 }}>
+                    {category.title}
+                  </h4>
+                  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    {category.skills.map((skill) => (
+                      <div
+                        key={skill.name}
+                        className="p-4 rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                        style={{
+                          backgroundColor: "rgba(255, 255, 255, 0.05)",
+                          border: "1px solid rgba(255, 255, 255, 1)",
+                        }}
+                        onClick={() =>
+                          setSelectedSkill(
+                            selectedSkill === skill.name ? null : skill.name
+                          )
+                        }
+                        onMouseEnter={e => {
+                          (e.currentTarget as HTMLDivElement).style.backgroundColor = "rgba(182, 182, 182, 0.5)";
+                        }}
+                        onMouseLeave={e => {
+                          (e.currentTarget as HTMLDivElement).style.backgroundColor = "rgba(255, 255, 255, 0.05)";
+                        }}
+                      >
+                        <span
+                          className="w-full block text-center py-1 px-2 rounded-md"
+                          style={{
+                            backgroundColor: "rgba(182, 182, 182, 1)",
+                            color: "#000000ff",
+                          }}
+                        >
+                          {skill.name}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
@@ -171,7 +205,7 @@ export function AboutSection() {
                   {selectedSkill}
                 </h4>
                 <p style={{ color: "#E5E7EB" }}>
-                  {skills.find((s) => s.name === selectedSkill)?.description}
+                  {allSkills.find((s) => s.name === selectedSkill)?.description}
                 </p>
               </div>
             )}

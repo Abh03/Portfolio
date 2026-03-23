@@ -4,6 +4,20 @@ import { useEffect, useRef, useState } from "react";
 
 const experiences = [
   {
+    title: "Software Engineer",
+    company: "NAVIO",
+    period: "10/2025 - 02/2026",
+    logo: "/placeholder-logo.png",
+    description: "Architected and implemented critical AI infrastructure and vision pipelines for maritime logistics automation.",
+    achievements: [
+      "AI Infrastructure: Migrated AI stack to Gemini, cutting inference costs by ~90% and resolving race conditions via atomic DB locking.",
+      "Vision & Extraction: Engineered a document AI extraction pipeline with bounding-box visualization to parse complex maritime Bills of Lading (B/L) in under 30 seconds.",
+      "System Reliability: Designed a fault-tolerant regeneration workflow with soft deletes and rollback logic to prevent data corruption.",
+      "Adaptive AI: Engineered a dynamic prompt system adapting AI personas to user roles to align responses with business KPIs.",
+    ],
+    skills: ["Gemini", "AI Infrastructure", "Computer Vision", "System Reliability", "Adaptive AI"],
+  },
+  {
     title: "Business Development Lead",
     company: "Yagya InfoTech",
     period: "06/2024 - Present",
