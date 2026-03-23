@@ -65,13 +65,13 @@ export function ContactSection() {
   // --- END OF CHANGES ---
 
   const handleEmailCopy = () => {
-    navigator.clipboard.writeText("abhyu.adhikari@gmail.com");
+    navigator.clipboard.writeText("abhyudit.adhikari@gmail.com");
     setEmailCopied(true);
     setTimeout(() => setEmailCopied(false), 2000);
   };
 
   const contactInfo = [
-    { icon: MailIcon, label: "Email", value: "abhyu.adhikari@gmail.com" },
+    { icon: MailIcon, label: "Email", value: "abhyudit.adhikari@gmail.com" },
     { icon: PhoneIcon, label: "Phone", value: "+977 9748284848" },
     { icon: LocationIcon, label: "Location", value: "Kathmandu, Nepal" },
   ];

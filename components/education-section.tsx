@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 const educationData = [
   {
@@ -77,19 +78,35 @@ export function EducationSection() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <h2
             className="text-5xl md:text-5xl font-bold mb-6"
             style={{ fontFamily: "'Thiket'", color: themeColor }}
           >
             Education
           </h2>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {educationData.map((edu, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ x: index === 0 ? -50 : 50, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ 
+                type: "spring",
+                stiffness: 50,
+                damping: 20,
+                duration: 1, 
+                delay: index * 0.1 
+              }}
               className="p-8 rounded-lg transition-all duration-300 hover:scale-[1.02] group"
               style={{
                 backgroundColor: "#111829",
@@ -118,7 +135,7 @@ export function EducationSection() {
                 className="mt-6 h-1 w-0 group-hover:w-full transition-all duration-500 rounded-full"
                 style={{ backgroundColor: themeColor }}
               />
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
