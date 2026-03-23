@@ -108,7 +108,7 @@ export function AboutSection() {
       {/* --- END OF CHANGES --- */}
       
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col gap-16">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* About Me Text Content */}
           <div className="space-y-8">
             <h2 className="text-5xl md:text-5xl font-bold mb-6" style={{ fontFamily: "'Thiket'", color: "#00FFFF" }}>
@@ -149,20 +149,20 @@ export function AboutSection() {
               Technical Skills
             </h3>
             
-            <div className="space-y-8">
+            <div className="space-y-6">
               {skillCategories.map((category) => (
                 <div key={category.title}>
-                  <h4 className="text-xl font-semibold mb-4" style={{ color: "#00FFFF", opacity: 0.9 }}>
+                  <h4 className="text-lg font-semibold mb-3" style={{ color: "#00FFFF", opacity: 0.9 }}>
                     {category.title}
                   </h4>
-                  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     {category.skills.map((skill) => (
                       <div
                         key={skill.name}
-                        className="p-4 rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+                        className="p-2.5 rounded-md cursor-pointer transition-transform duration-300 hover:scale-105"
                         style={{
                           backgroundColor: "rgba(255, 255, 255, 0.05)",
-                          border: "1px solid rgba(255, 255, 255, 1)",
+                          border: "1px solid rgba(255, 255, 255, 0.8)",
                         }}
                         onClick={() =>
                           setSelectedSkill(
@@ -170,17 +170,18 @@ export function AboutSection() {
                           )
                         }
                         onMouseEnter={e => {
-                          (e.currentTarget as HTMLDivElement).style.backgroundColor = "rgba(182, 182, 182, 0.5)";
+                          (e.currentTarget as HTMLDivElement).style.backgroundColor = "rgba(182, 182, 182, 0.4)";
                         }}
                         onMouseLeave={e => {
                           (e.currentTarget as HTMLDivElement).style.backgroundColor = "rgba(255, 255, 255, 0.05)";
                         }}
                       >
                         <span
-                          className="w-full block text-center py-1 px-2 rounded-md"
+                          className="w-full block text-center py-0.5 px-1 rounded-sm text-sm"
                           style={{
                             backgroundColor: "rgba(182, 182, 182, 1)",
                             color: "#000000ff",
+                            fontWeight: "500"
                           }}
                         >
                           {skill.name}
@@ -195,16 +196,16 @@ export function AboutSection() {
             {/* Skill Description Box */}
             {selectedSkill && (
               <div
-                className="mt-6 p-6 rounded-lg"
+                className="mt-6 p-5 rounded-lg"
                 style={{
                   backgroundColor: "rgba(255, 255, 255, 0.1)",
                   border: "1px solid #00FFFF",
                 }}
               >
-                <h4 className="text-xl font-semibold mb-2" style={{ color: "#00FFFF" }}>
+                <h4 className="text-lg font-semibold mb-2" style={{ color: "#00FFFF" }}>
                   {selectedSkill}
                 </h4>
-                <p style={{ color: "#E5E7EB" }}>
+                <p className="text-sm" style={{ color: "#E5E7EB" }}>
                   {allSkills.find((s) => s.name === selectedSkill)?.description}
                 </p>
               </div>
