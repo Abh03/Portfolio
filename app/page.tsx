@@ -17,6 +17,22 @@ export default function Portfolio() {
     setShowContent(isComplete);
   };
 
+  useEffect(() => {
+    // Force scroll to top on refresh
+    window.scrollTo(0, 0);
+    
+    // Some browsers might need a slight delay or to handle the history restoration
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    
+    return () => {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'auto';
+      }
+    };
+  }, []);
+
   // The old useEffect is no longer needed here, as HeroSection handles its own scroll logic
   
   return (
