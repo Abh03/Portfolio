@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 
 const publication = {
   title: "Real-time Assistive Navigation System for the Visually Impaired",
-  status: "Co-authored Research",
-  logo: "/placeholder-logo.png",
+  status: "IEEE Xplore",
+  logo: "/ieee.png",
   description: "A comprehensive framework designed to assist visually impaired individuals in indoor navigation using cutting-edge computer vision and natural language processing.",
   achievements: [
     "Integrated YOLOv12 for precise real-time object detection and MediaPipe for human pose estimation.",

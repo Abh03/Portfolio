@@ -145,7 +145,8 @@ export function ProjectsSection() {
 
     const handleMouseMove = (event: MouseEvent) => {
       if (sectionRef.current) {
-        setMousePosition({ x: event.pageX, y: event.pageY });
+        const rect = sectionRef.current.getBoundingClientRect();
+        setMousePosition({ x: event.clientX - rect.left, y: event.clientY - rect.top });
       }
     };
     
@@ -153,13 +154,13 @@ export function ProjectsSection() {
         setMousePosition({ x: -1000, y: -1000 });
     }
 
-    window.addEventListener('mousemove', handleMouseMove);
     const currentSectionRef = sectionRef.current;
+    currentSectionRef?.addEventListener('mousemove', handleMouseMove);
     currentSectionRef?.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      window.removeEventListener('mousemove', handleMouseMove);
+      currentSectionRef?.removeEventListener('mousemove', handleMouseMove);
       currentSectionRef?.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);

@@ -8,14 +8,14 @@ const educationData = [
     degree: "Advanced Engineering Program in AI Agent Workflows & Agentic Systems",
     institution: "IIT Madras Pravartak",
     period: "Mar 2026 – Oct 2026 (expected)",
-    logo: "/placeholder-logo.png",
+    logo: "/iit.jpg",
     description: "Intensive program focused on designing and implementing autonomous AI agents and complex agentic workflows using state-of-the-art frameworks.",
   },
   {
     degree: "Bachelor of Engineering: Computer Engineering",
     institution: "Kathmandu University",
     period: "Feb 2022 – June 2026 (expected)",
-    logo: "/kucc-logo.png",
+    logo: "/kathmandu_university.jpg",
     description: "Specializing in software engineering, machine learning, and system design. Actively involved in technical clubs and research projects.",
   }
 ];
