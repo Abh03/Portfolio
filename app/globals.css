@@ -162,6 +162,27 @@
   }
 }
 
+/* Hero Background Optimization */
+.hero-bg-layer {
+  background-image: url('/light-tech-circuit.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 767px) {
+  .hero-bg-layer {
+    background-image: url('/light-tech-circuit-mobile.png');
+  }
+}
+
+.final-bg-layer {
+  background-image: url('/window-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 /* Hero Text Mask Animation */
 .hero-text-mask {
   background: var(--portfolio-bg);

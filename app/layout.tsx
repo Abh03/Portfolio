@@ -28,6 +28,9 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <link rel="preload" href="/light-tech-circuit.png" as="image" media="(min-width: 768px)" />
+        <link rel="preload" href="/light-tech-circuit-mobile.png" as="image" media="(max-width: 767px)" />
+        <link rel="preload" href="/window-bg.png" as="image" />
       </head>
       <body className="antialiased">{children}</body>
     </html>

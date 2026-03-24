@@ -78,49 +78,27 @@ const [isMobile, setIsMobile] = useState(false);
     }
   }, [scrollProgress, onAnimationComplete]);
 
-  const backgroundImageUrl = isMobile
-    ? '/light-tech-circuit-mobile.png'
-    : '/light-tech-circuit.png';
-
-  if (!isMounted) {
-    return <div style={{ height: "300vh" }} />;
-  }
-
   return (
     <div className="sticky top-0 h-[300vh]">
       {/* Layer 1: The original background image for the text window */}
-      <div
-        className="fixed top-0 left-0 w-screen h-screen z-0"
-        style={{
-          backgroundImage: `url('${backgroundImageUrl}')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
+      <div className="fixed top-0 left-0 w-screen h-screen z-0 hero-bg-layer" />
       
-      {/* --- START OF CHANGES --- */}
-      {/* This is now the ONLY background layer the user sees. It fades in. */}
+      {/* Layer 2: Final background that fades in */}
       <div
-        className="fixed top-0 left-0 w-screen h-screen z-10"
+        className="fixed top-0 left-0 w-screen h-screen z-10 final-bg-layer"
         style={{
-          backgroundImage: `url("/window-bg.png")`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
           opacity: finalBackgroundOpacity,
         }}
       />
-      {/* --- END OF CHANGES --- */}
 
       <div 
         className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-30"
         style={{ opacity: typewriterOpacity, pointerEvents: 'none' }}
       >
-        <TypewriterEffect />
+        {isMounted && <TypewriterEffect />}
       </div>
 
-      {/* Layer 2 is now Layer 3: The dark overlay with the text cutout */}
+      {/* Layer 3: The dark overlay with the text cutout */}
       <div 
         className="fixed top-0 left-0 w-screen h-screen z-20" 
         style={{ 
@@ -129,17 +107,14 @@ const [isMobile, setIsMobile] = useState(false);
       >
         <div className="absolute inset-0 flex items-center justify-center">
           <h1
-            className="font-black leading-none text-center select-none pointer-events-none"
+            className="font-black leading-none text-center select-none pointer-events-none hero-bg-layer"
             style={{
               fontSize: `${fontSize}vw`,
-              fontFamily: "'Gore'", // Apply the Gore font
+              fontFamily: "'Gore'", 
 
               marginTop: `${textMarginTop}vh`,
               opacity: 1,
-              backgroundImage: `url('${backgroundImageUrl}')`,
               backgroundAttachment: "fixed",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
               WebkitBackgroundClip: "text",
               backgroundClip: "text",
               WebkitTextFillColor: "transparent",
@@ -155,7 +130,6 @@ const [isMobile, setIsMobile] = useState(false);
       {scrollProgress > 0.95 && (
         <div 
           className="fixed bottom-85 left-1/2 transform -translate-x-1/2 z-30"
-          style={{  }}
         >
           <h1 className="text-5xl font-black text-[#00FFFF] text-center"></h1>
         </div>
