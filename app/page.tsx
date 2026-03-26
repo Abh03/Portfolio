@@ -14,14 +14,21 @@ export default function Portfolio() {
 
   // This function will be passed to HeroSection to know when its animation is done
   const handleAnimationComplete = (isComplete: boolean) => {
-    if (isComplete && !showContent) {
-      setShowContent(true);
-      // Ensure we are exactly at the end of the scroll track when showing content
-      // This prevents overshooting during fast scrolls
-      window.scrollTo({
-        top: window.innerHeight * 3, // Matches the 300vh height of the HeroSection
-        behavior: "instant"
-      });
+    if (isComplete) {
+      if (!showContent) {
+        setShowContent(true);
+        // Ensure we are exactly at the end of the scroll track when showing content
+        // This prevents overshooting during fast scrolls
+        window.scrollTo({
+          top: window.innerHeight * 3, // Matches the 300vh height of the HeroSection
+          behavior: "instant"
+        });
+      }
+    } else {
+      // If we scroll back up, hide the content again to reset the transition
+      if (showContent) {
+        setShowContent(false);
+      }
     }
   };
 

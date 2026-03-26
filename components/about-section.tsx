@@ -7,6 +7,7 @@ const skillCategories = [
     title: "Languages",
     skills: [
       { name: "Python", description: "Primary language for ML development, data analysis, and backend services." },
+      { name: "C++", description: "Efficient language for performance-critical applications and systems programming." },
       { name: "SQL", description: "Proficient in database design, querying, and data manipulation." },
     ]
   },
@@ -22,13 +23,13 @@ const skillCategories = [
     ]
   },
   {
-    title: "Backend & Infrastructure",
+    title: "Tools & Frameworks",
     skills: [
       { name: "FastAPI", description: "Modern, high-performance web framework for building APIs with Python." },
       { name: "Docker", description: "Containerization tool for consistent deployment across different environments." },
       { name: "Git", description: "Essential tool for version control and collaborative development." },
       { name: "Supabase", description: "Backend-as-a-service for database, auth, and real-time features." },
-      { name: "Vector Database", description: "Storing and searching high-dimensional embeddings for AI applications." },
+      { name: "Vector Databases", description: "Storing and searching high-dimensional embeddings for AI applications." },
       { name: "AWS", description: "Cloud platform for deploying and scaling machine learning workloads." },
     ]
   }
@@ -116,29 +117,37 @@ export function AboutSection() {
             </h2>
             <div className="space-y-6 text-lg leading-relaxed" style={{ color: "#E5E7EB" }}>
               <p>
-                I'm a passionate{" "}
+                <p>Hi, I'm Abhyudit.</p> I am an{" "}
                 <span style={{ color: "#00FFFF", fontWeight: "600" }}>
-                  Computer Engineering student
+                  AI Developer
                 </span>{" "}
-                specializing in Machine Learning with hands-on experience in
-                developing innovative deep learning solutions.
-              </p>
-              <p>
-                My expertise spans{" "}
+                specializing in computer vision, RAG pipelines, and LLM integration.
+                My focus is on turning raw data into{" "}
+                <span style={{ color: "#00FFFF", fontWeight: "600" }}>
+                  real-world impact
+                </span>, whether that means engineering a ResNet50 vision model for
+                an award-winning IoT aquaculture system or redesigning enterprise AI
+                infrastructure to{" "}
                 <span style={{ color: "#9F2B68", fontWeight: "600" }}>
-                  computer vision, neural networks, and data science
-                </span>
-                , with a proven track record of building real-world applications
-                that deliver measurable impact.
+                  cut inference costs by 90%
+                </span>.
               </p>
               <p>
-                From achieving{" "}
+                Right now, I am obsessed with the shift from{" "}
+                <span style={{ color: "#9F2B68", fontWeight: "600" }}>
+                  static AI to autonomous systems
+                </span>.
+              </p>
+              <p>
+                I am heavily focused on mastering{" "}
                 <span style={{ color: "#00FFFF", fontWeight: "600" }}>
-                  94% F1-scores
+                  multi-agent orchestration, API integration, and deployment tools
                 </span>{" "}
-                in medical imaging classification to leading cross-functional
-                teams, I combine technical excellence with strategic thinking to
-                solve complex challenges.
+                (like FastAPI and Docker) to build intelligent systems that don't
+                just answer questions, but actually{" "}
+                <span style={{ color: "#00FFFF", fontWeight: "600" }}>
+                  execute complex workflows
+                </span>.
               </p>
             </div>
           </div>
