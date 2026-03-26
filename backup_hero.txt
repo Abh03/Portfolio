@@ -79,7 +79,7 @@ export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isC
       <div
         className="fixed top-0 left-0 w-screen h-screen z-0"
         style={{
-          backgroundImage: `url('/light-tech-circuit.png')`,
+          backgroundImage: `url('/light-tech-circuit.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -91,7 +91,7 @@ export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isC
       <div
         className="fixed top-0 left-0 w-screen h-screen z-10"
         style={{
-          backgroundImage: `url("/window-bg.png")`,
+          backgroundImage: `url("/window-bg.jpg")`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -122,7 +122,7 @@ export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isC
               fontFamily: "'Gore', sans-serif",
               marginTop: `${textMarginTop}vh`,
               opacity: 1,
-              backgroundImage: `url('/light-tech-circuit.png')`,
+              backgroundImage: `url('/light-tech-circuit.jpg')`,
               backgroundAttachment: "fixed",
               backgroundSize: "cover",
               backgroundPosition: "center",

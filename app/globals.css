@@ -164,7 +164,7 @@
 
 /* Hero Background Optimization */
 .hero-bg-layer {
-  background-image: url('/light-tech-circuit.png');
+  background-image: url('/light-tech-circuit.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -173,12 +173,12 @@
 
 @media (max-width: 767px) {
   .hero-bg-layer {
-    background-image: url('/light-tech-circuit-mobile.png');
+    background-image: url('/light-tech-circuit-mobile.jpg');
   }
 }
 
 .final-bg-layer {
-  background-image: url('/window-bg.png');
+  background-image: url('/window-bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

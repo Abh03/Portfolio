@@ -10,7 +10,7 @@ const projects = [
     tech: "Python, PyTorch, Deep Learning",
     description:
       "Created HybridSN with spectral attention for brain tissue classification, achieving 94% F1-score.",
-    image: "/brain-hyperspectral-neural-network.png",
+    image: "/brain-hyperspectral-neural-network.jpg",
   },
   {
     title: "Pneumonia Detection AI",
@@ -59,7 +59,7 @@ const projects = [
     tech: "Python, DSP, Scikit-learn",
     description:
       "Designed a system using DSP to extract vocal features and trained a Random Forest model for real-time prediction.",
-    image: "/voice-classification-dsp.png",
+    image: "/voice-classification-dsp.jpg",
   },
   {
     title: "Movie4AllMoods",
@@ -185,7 +185,7 @@ export function ProjectsSection() {
   style={{
     backgroundImage: `
       linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-      url('/window-bg-pot.png')
+      url('/window-bg-pot.jpg')
     `,
     backgroundSize: 'cover',
     backgroundPosition: 'center',

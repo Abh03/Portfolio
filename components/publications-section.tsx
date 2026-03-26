@@ -60,7 +60,7 @@ export function PublicationsSection() {
       style={{
         backgroundImage: `
           linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-          url('/window-bg.png')
+          url('/window-bg.jpg')
         `,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
