@@ -53,24 +53,24 @@ export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isC
 
   // Create a smoothed spring value for scroll progress to provide "inertia"
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 25,
+    stiffness: 100,
     damping: 30,
     restDelta: 0.001
   });
 
   // Map progress to various animation values
-  const fontSize = useTransform(smoothProgress, [0, 0.5], ["300vw", "6vw"]);
+  const fontSize = useTransform(smoothProgress, [0, 0.9], ["300vw", "6vw"]);
   
   // Animate from initial position to exact center (0%)
-  const xPos = useTransform(smoothProgress, [0, 0.5], [initialX, "0%"]);
-  const yPos = useTransform(smoothProgress, [0, 0.5], [initialY, "0%"]);
+  const xPos = useTransform(smoothProgress, [0, 0.9], [initialX, "0%"]);
+  const yPos = useTransform(smoothProgress, [0, 0.9], [initialY, "0%"]);
 
   const typewriterOpacity = useTransform(smoothProgress, [0, 0.05], [1, 0]);
-  const finalBackgroundOpacity = useTransform(smoothProgress, [0.3, 0.5], [0, 1]);
+  const finalBackgroundOpacity = useTransform(smoothProgress, [0.4, 0.9], [0, 1]);
 
   useMotionValueEvent(smoothProgress, "change", (latest) => {
     if (onAnimationComplete) {
-      onAnimationComplete(latest >= 0.99);
+      onAnimationComplete(latest >= 0.95);
     }
   });
 

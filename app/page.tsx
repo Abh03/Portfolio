@@ -14,7 +14,15 @@ export default function Portfolio() {
 
   // This function will be passed to HeroSection to know when its animation is done
   const handleAnimationComplete = (isComplete: boolean) => {
-    setShowContent(isComplete);
+    if (isComplete && !showContent) {
+      setShowContent(true);
+      // Ensure we are exactly at the end of the scroll track when showing content
+      // This prevents overshooting during fast scrolls
+      window.scrollTo({
+        top: window.innerHeight * 3, // Matches the 300vh height of the HeroSection
+        behavior: "instant"
+      });
+    }
   };
 
   useEffect(() => {
@@ -40,7 +48,11 @@ export default function Portfolio() {
       {/* 3. Pass the function as a prop to HeroSection */}
       <HeroSection onAnimationComplete={handleAnimationComplete} />
       
-      <div className="relative z-40">
+      <div 
+        className={`relative z-40 transition-opacity duration-1000 ${
+          showContent ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+      >
         <AboutSection />
         <EducationSection />
         <PublicationsSection />
