@@ -1,6 +1,7 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
+import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from "framer-motion"
 
 // The TypewriterEffect component remains the same
 const TypewriterEffect = () => {
@@ -30,110 +31,102 @@ const TypewriterEffect = () => {
 
 
 export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isComplete: boolean) => void }) {
-  const [scrollY, setScrollY] = useState(0);
-  const [windowHeight, setWindowHeight] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
-  // Inside your HeroSection component, with the other useState hooks
-const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const checkDeviceType = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkDeviceType();
-    window.addEventListener('resize', checkDeviceType);
-    return () => window.removeEventListener('resize', checkDeviceType);
-  }, []);
+
+  // --- POSITIONING CONFIGURATION ---
+  // Change these values to set the STARTING position of the text.
+  // Positive X = Right, Negative X = Left
+  // Positive Y = Down, Negative Y = Up
+  const initialX = "50%"; 
+  const initialY = "40%";
+  // --------------------------------
 
   useEffect(() => {
     setIsMounted(true);
-    setWindowHeight(window.innerHeight);
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const maxScroll = windowHeight * 1.5;
-  const scrollProgress = maxScroll > 0 ? Math.min(scrollY / maxScroll, 1) : 0;
-  
-  const fontSize = Math.max(900 - scrollProgress * 900, 9); 
-  const textMarginTop = -scrollProgress * 20;
-  
-  const finalTitleOpacity = scrollProgress > 0.95 
-    ? 1 - (scrollProgress - 0.95) * 20 
-    : 1; 
-    
-    
-  const typewriterOpacity = Math.max(1 - scrollProgress*1.5, 0);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
 
-  // --- START OF NEW LOGIC ---
-  // This calculates the opacity for the final background.
-  // It starts fading in at 80% scroll and is fully visible at 100%.
-  const finalBackgroundOpacity = scrollProgress > 0.8 
-    ? (scrollProgress - 0.8) * 5 
-    : 0;
-  // --- END OF NEW LOGIC ---
-  useEffect(() => {
+  // Create a smoothed spring value for scroll progress to provide "inertia"
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 25,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  // Map progress to various animation values
+  const fontSize = useTransform(smoothProgress, [0, 0.5], ["300vw", "6vw"]);
+  
+  // Animate from initial position to exact center (0%)
+  const xPos = useTransform(smoothProgress, [0, 0.5], [initialX, "0%"]);
+  const yPos = useTransform(smoothProgress, [0, 0.5], [initialY, "0%"]);
+
+  const typewriterOpacity = useTransform(smoothProgress, [0, 0.05], [1, 0]);
+  const finalBackgroundOpacity = useTransform(smoothProgress, [0.3, 0.5], [0, 1]);
+
+  useMotionValueEvent(smoothProgress, "change", (latest) => {
     if (onAnimationComplete) {
-      onAnimationComplete(scrollProgress >= 1);
+      onAnimationComplete(latest >= 0.99);
     }
-  }, [scrollProgress, onAnimationComplete]);
+  });
 
   return (
-    <div className="sticky top-0 h-[300vh]">
-      {/* Layer 1: The original background image for the text window */}
-      <div className="fixed top-0 left-0 w-screen h-screen z-0 hero-bg-layer" />
-      
-      {/* Layer 2: Final background that fades in */}
-      <div
-        className="fixed top-0 left-0 w-screen h-screen z-10 final-bg-layer"
-        style={{
-          opacity: finalBackgroundOpacity,
-        }}
-      />
+    <div ref={containerRef} className="relative h-[300vh]">
+      {/* Fixed container ensures the cutout stays centered regardless of scroll position */}
+      <div className="fixed top-0 left-0 h-screen w-full overflow-hidden pointer-events-none">
+        {/* Layer 1: The original background image */}
+        <div className="absolute inset-0 z-0 hero-bg-layer" />
+        
+        {/* Layer 2: Final background that fades in */}
+        <motion.div
+          className="absolute inset-0 z-10 final-bg-layer"
+          style={{
+            opacity: finalBackgroundOpacity,
+          }}
+        />
 
-      <div 
-        className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-30"
-        style={{ opacity: typewriterOpacity, pointerEvents: 'none' }}
-      >
-        {isMounted && <TypewriterEffect />}
-      </div>
-
-      {/* Layer 3: The dark overlay with the text cutout */}
-      <div 
-        className="fixed top-0 left-0 w-screen h-screen z-20" 
-        style={{ 
-          backgroundColor: "#0A0A14",
-        }}
-      >
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h1
-            className="font-black leading-none text-center select-none pointer-events-none hero-bg-layer"
-            style={{
-              fontSize: `${fontSize}vw`,
-              fontFamily: "'Gore'", 
-
-              marginTop: `${textMarginTop}vh`,
-              opacity: 1,
-              backgroundAttachment: "fixed",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              color: "transparent",
-            }}
-          >
-            <div className="block">&nbsp;ABHYUDIT</div>
-          </h1>
-        </div>
-      </div>
-
-      {/* Final positioned title */}
-      {scrollProgress > 0.95 && (
-        <div 
-          className="fixed bottom-85 left-1/2 transform -translate-x-1/2 z-30"
+        {/* Typewriter text layer */}
+        <motion.div 
+          className="absolute inset-0 flex items-center justify-center z-30"
+          style={{ opacity: typewriterOpacity }}
         >
-          <h1 className="text-5xl font-black text-[#00FFFF] text-center"></h1>
+          {isMounted && <TypewriterEffect />}
+        </motion.div>
+
+        {/* Layer 3: The dark overlay with the text cutout */}
+        <div 
+          className="absolute inset-0 z-20" 
+          style={{ 
+            backgroundColor: "#0A0A14",
+          }}
+        >
+          {/* Centered container for the text cutout */}
+          <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+            <motion.h1
+              className="font-black leading-none text-center select-none hero-bg-layer"
+              style={{
+                fontSize,
+                fontFamily: "'Gore'", 
+                opacity: 1,
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                color: "transparent",
+                // Use relative positioning to shift the text without breaking the fixed background
+                position: "relative",
+                left: xPos,
+                top: yPos,
+              }}
+            >
+              ABHYUDIT
+            </motion.h1>
+          </div>
         </div>
-      )}
+      </div>
     </div>
   )
 }

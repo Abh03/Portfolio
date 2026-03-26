@@ -36,15 +36,11 @@ export default function Portfolio() {
   // The old useEffect is no longer needed here, as HeroSection handles its own scroll logic
   
   return (
-    <main className="relative">
+    <main className="relative bg-black">
       {/* 3. Pass the function as a prop to HeroSection */}
       <HeroSection onAnimationComplete={handleAnimationComplete} />
       
-      <div
-        className={`transition-opacity duration-1000 ${
-          showContent ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-      >
+      <div className="relative z-40">
         <AboutSection />
         <EducationSection />
         <PublicationsSection />
