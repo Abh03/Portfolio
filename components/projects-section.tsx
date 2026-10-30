@@ -22,7 +22,7 @@ const projects = [
     title: "Pneumonia Detection AI",
     tech: "Python, TensorFlow, React, Django",
     description:
-      "Built a CNN-based chest X-ray infection classifier with a React interface and Django integration.",
+      "Built a CNN-based chest X-ray infection classifier with 96% accuracy, a React interface, and Django integration.",
     image: "/pneumonia-detection-ai.png",
   },
   {
@@ -48,16 +48,16 @@ const projects = [
   },
   {
     title: "RightMeal Fitness Planner",
-    tech: "C, Algorithm Design",
+    tech: "C++, Qt, MySQL",
     description:
-      "A fitness app to generate personalized diet plans for Nepalese cuisine and targeted workouts.",
+      "A desktop app that calculates BMI, body fat, and maintenance calories to create diet plans with foods available in Nepal, alongside exercise guides.",
     image: "/rightmeal-fitness-app-nepal.jpg",
   },
   {
     title: "R.S. Craftmandu E-commerce",
     tech: "React.js, Tailwind CSS, Firebase",
     description:
-      "A responsive e-commerce site with product listings, cart, checkout, and an admin panel.",
+      "An online store with product browsing, a shopping cart, order placement, and admin screens for managing products and orders.",
     image: "/modern-ecommerce-showcase.png",
   },
   {
