@@ -4,28 +4,52 @@ import { useEffect, useRef, useState } from "react";
 
 const experiences = [
   {
+    title: "Software Engineer (Traineeship)",
+    company: "Infinite Computer Solutions",
+    period: "08/2026 - Present",
+    logo: "",
+    description: "Full-time enterprise training in full-stack development, data engineering, QA, and applied AI.",
+    achievements: [
+      "Built an AI CV Screening system that screens PDF CVs against approved job descriptions and presents evidence for recruiter review.",
+    ],
+    skills: ["Applied AI", "Full-stack Development", "Data Engineering", "QA"],
+  },
+  {
+    title: "Co-founder & AI Lead",
+    company: "CreoTech",
+    period: "05/2026 - Present",
+    logo: "",
+    description: "Led AI and engineering for an employee-wellbeing platform MVP.",
+    achievements: [
+      "Built a webcam-based posture estimation tool using MediaPipe landmarks and a regression model, with eye-strain reminders and guided exercises.",
+    ],
+    skills: ["Python", "FastAPI", "Next.js", "OpenCV", "MediaPipe"],
+  },
+  {
     title: "Software Engineer",
     company: "NAVIO",
     period: "10/2025 - 02/2026",
     logo: "/navio.png",
     description: "Architected and implemented critical AI infrastructure and vision pipelines for maritime logistics automation.",
     achievements: [
-      "AI Infrastructure: Migrated AI stack to Gemini, cutting inference costs by ~90% and resolving race conditions via atomic DB locking.",
-      "Vision & Extraction: Engineered a document AI extraction pipeline with bounding-box visualization to parse complex maritime Bills of Lading (B/L) in under 30 seconds.",
+      "Migrated shipment email parsing from OpenAI to Gemini, cutting LLM costs by ~90% with dynamic model routing, input sanitization, Redis/Vercel KV caching, and atomic DB locking.",
+      "Vision & Extraction: Built Gemini vision-based B/L extraction for Pontus, with per-field bounding boxes for complex maritime documents and extraction in under 30 seconds.",
       "System Reliability: Designed a fault-tolerant regeneration workflow with soft deletes and rollback logic to prevent data corruption.",
-      "Adaptive AI: Engineered a dynamic prompt system adapting AI personas to user roles to align responses with business KPIs.",
+      "Implemented role-adaptive prompts for freight forwarders, cargo owners, and charterers to align responses with business KPIs.",
     ],
     skills: ["Gemini", "AI Infrastructure", "Computer Vision", "System Reliability", "Adaptive AI"],
   },
   {
     title: "Co-founder & ML Engineer",
     company: "Dr. Fish",
-    period: "02/2024 - Present",
+    period: "02/2024 - 11/2025",
     logo: "/dr-fish-logo.png",
     description: "Architected the core AI strategy for an award-winning IoT aquaculture system, focusing on automated disease detection and yield optimization.",
     achievements: [
       "Engineered a ResNet50 computer vision model for fish disease classification, driving the core AI strategy for an award-winning IoT aquaculture system designed to boost yield by 35%.",
       "Developed an end-to-end AI pipeline for real-time fish health monitoring using deep learning.",
+      "Trained the TensorFlow classifier to 95% accuracy, deployed it on Hugging Face, and reduced inference latency from 200 ms to 120 ms.",
+      "Built a FastAPI backend to serve the model to the user-facing app.",
     ],
     skills: ["Machine Learning", "ResNet50", "Computer Vision", "IoT", "AgriTech"],
   },
@@ -69,7 +93,7 @@ const experiences = [
 
 const recognitions = [
   {
-    title: "Digital Innovation in Agriculture and Logistics(DIAL) Accelerator Program",
+    title: "Top 7, Digital Innovation in Agriculture and Logistics (DIAL) Accelerator Program",
     organization: "Aadhyanta Fund Management & Swiss Agency for Development and Cooperation(SDC)",
     image: "/aadhyanta.jpg",
   },
@@ -238,12 +262,18 @@ export function ExperienceSection() {
                   >
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-4">
-                        <img
-                          src={exp.logo}
-                          alt={`${exp.company} logo`}
-                          className="w-12 h-12 rounded-full object-contain"
-                          style={{ backgroundColor: "#FFFFFF" }}
-                        />
+                        {exp.logo ? (
+                          <img
+                            src={exp.logo}
+                            alt={`${exp.company} logo`}
+                            className="w-12 h-12 rounded-full object-contain"
+                            style={{ backgroundColor: "#FFFFFF" }}
+                          />
+                        ) : (
+                          <div className="w-12 h-12 rounded-full flex items-center justify-center font-bold flex-shrink-0" style={{ backgroundColor: "#00FFFF", color: "#111829" }} aria-hidden="true">
+                            {exp.company.slice(0, 2).toUpperCase()}
+                          </div>
+                        )}
                         <div>
                           <h3
                             className="text-xl font-semibold"

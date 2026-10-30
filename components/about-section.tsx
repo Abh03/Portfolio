@@ -9,6 +9,7 @@ const skillCategories = [
       { name: "Python", description: "Primary language for ML development, data analysis, and backend services." },
       { name: "C++", description: "Efficient language for performance-critical applications and systems programming." },
       { name: "SQL", description: "Proficient in database design, querying, and data manipulation." },
+      { name: "TypeScript", description: "Typed JavaScript for web applications and user interfaces." },
     ]
   },
   {
@@ -20,6 +21,14 @@ const skillCategories = [
       { name: "RAG Pipelines", description: "Building Retrieval-Augmented Generation systems for LLMs." },
       { name: "LLM APIs (Gemini, OpenAI)", description: "Integrating state-of-the-art large language models into applications." },
       { name: "CNNs", description: "Deep learning architecture specialized for image and spatial data processing." },
+      { name: "MediaPipe", description: "Landmark and pose estimation for computer vision applications." },
+      { name: "YOLO", description: "Object detection for computer vision applications." },
+      { name: "Hugging Face", description: "Model hosting and inference workflows." },
+      { name: "Scikit-learn", description: "Classical machine learning and data processing." },
+      { name: "NumPy", description: "Numerical computing with arrays." },
+      { name: "pandas", description: "Data manipulation and analysis." },
+      { name: "LangChain", description: "Framework for building LLM workflows." },
+      { name: "LangGraph", description: "Framework for stateful agent workflows." },
     ]
   },
   {
@@ -31,6 +40,13 @@ const skillCategories = [
       { name: "Supabase", description: "Backend-as-a-service for database, auth, and real-time features." },
       { name: "Vector Databases", description: "Storing and searching high-dimensional embeddings for AI applications." },
       { name: "AWS", description: "Cloud platform for deploying and scaling machine learning workloads." },
+      { name: "PostgreSQL", description: "Relational database used in application backends." },
+      { name: "pgvector", description: "Vector search in PostgreSQL." },
+      { name: "Redis", description: "Caching and background-work infrastructure." },
+      { name: "Next.js", description: "React framework for web applications." },
+      { name: "Vercel KV", description: "Key-value caching for web applications." },
+      { name: "GitHub Actions", description: "Continuous integration workflows." },
+      { name: "pytest", description: "Python test automation." },
     ]
   }
 ];
@@ -117,9 +133,9 @@ export function AboutSection() {
             </h2>
             <div className="space-y-6 text-lg leading-relaxed" style={{ color: "#E5E7EB" }}>
               <p>
-                <p>Hi, I'm Abhyudit.</p> I am an{" "}
+                Hi, I'm Abhyudit. I am an{" "}
                 <span style={{ color: "#00FFFF", fontWeight: "600" }}>
-                  AI Developer
+                  AI/ML Engineer
                 </span>{" "}
                 specializing in computer vision, RAG pipelines, and LLM integration.
                 My focus is on turning raw data into{" "}

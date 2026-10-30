@@ -6,16 +6,17 @@ import { motion, useScroll, useTransform } from "framer-motion";
 const projects = [
   {
     title: "AI CV Screening",
-    tech: "Python, FastAPI, Angular, PostgreSQL, Redis, Celery",
+    tech: "Python, FastAPI, Angular, PostgreSQL/pgvector, Redis, Celery, Docker, Gemini",
     description:
-      "A recruiter workspace that screens PDF CVs against approved job descriptions, presents cited assessment evidence, and routes uncertain cases for human review.",
+      "A four-stage recruiter platform for approved job descriptions and PDF CVs, with OCR, eligibility rules, hybrid retrieval, citation-verified LLM assessments, versioned scoring, and human-review routing.",
     image: "/ai-cv-screening.svg",
+    link: "https://github.com/Abh03/AI-CV-Screening/",
   },
   {
     title: "Brain Tissue Classification",
     tech: "Python, TensorFlow/Keras, HybridSN",
     description:
-      "Classified healthy and tumorous brain tissue from hyperspectral images with a spectral-attention HybridSN model; the report records a 94% test F1-score.",
+      "Ongoing research classifying healthy and tumorous brain tissue with spectral-attention HybridSN, HSI calibration, normalization, patch extraction, and a reported 94% F1-score.",
     image: "/brain-hyperspectral-neural-network.jpg",
   },
   {
@@ -110,6 +111,11 @@ const ProjectCard = ({
           <p className="text-sm line-clamp-3" style={{ color: "#9CA3AF" }}>
             {project.description}
           </p>
+          {"link" in project && project.link && (
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-block mt-3 text-sm underline underline-offset-4" style={{ color: "#00FFFF" }}>
+              View on GitHub
+            </a>
+          )}
         </div>
       </div>
     </div>

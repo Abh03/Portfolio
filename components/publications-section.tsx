@@ -3,10 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 
 const publication = {
-  title: "Real-time Assistive Navigation System for the Visually Impaired",
-  status: "IEEE Xplore",
+  title: "Real-Time Assistive Navigation for Visually Impaired Using YOLOv12 and MediaPipe Pose Estimation",
+  status: "IEEE Xplore · 8th International Conference on DSIT 2025",
   logo: "/ieee.png",
-  description: "A comprehensive framework designed to assist visually impaired individuals in indoor navigation using cutting-edge computer vision and natural language processing.",
+  description: "A co-authored indoor navigation framework that combines computer vision, natural language processing, voice commands, and spatial audio feedback.",
+  doi: "10.1109/DSIT67006.2025.11389902",
+  paperUrl: "https://ieeexplore.ieee.org/document/11389902",
+  codeUrl: "https://github.com/santoshyadav-29/Deerhack_2025",
   achievements: [
     "Integrated YOLOv12 for precise real-time object detection and MediaPipe for human pose estimation.",
     "Developed a natural voice command interface and spatial audio feedback system for intuitive object localization.",
@@ -137,6 +140,18 @@ export function PublicationsSection() {
             <p className="text-lg mb-6 leading-relaxed" style={{ color: "#9CA3AF" }}>
               {publication.description}
             </p>
+
+            <div className="flex flex-wrap gap-4 mb-8 text-sm">
+              <a href={publication.paperUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4" style={{ color: "#00FFFF" }}>
+                Read paper
+              </a>
+              <a href={publication.codeUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4" style={{ color: "#00FFFF" }}>
+                View code
+              </a>
+              <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4" style={{ color: "#00FFFF" }}>
+                DOI: {publication.doi}
+              </a>
+            </div>
 
             <div className="mb-8">
               <h4 className="font-semibold text-xl mb-4" style={{ color: "#E5E7EB" }}>

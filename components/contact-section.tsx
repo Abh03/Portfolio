@@ -127,9 +127,9 @@ export function ContactSection() {
               className="text-xl leading-relaxed mx-auto max-w-2xl"
               style={{ color: "#E5E7EB" }}
             >
-              I am currently seeking innovative Machine Learning opportunities. If
-              you have a project or a role where my skills can make an impact, I
-              would be delighted to connect.
+              I am open to AI and Machine Learning opportunities, including remote
+              roles and relocation. If you have a project or a role where my skills
+              can make an impact, I would be delighted to connect.
             </p>
           </div>
 
