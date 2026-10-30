@@ -133,37 +133,36 @@ export function AboutSection() {
             </h2>
             <div className="space-y-6 text-lg leading-relaxed" style={{ color: "#E5E7EB" }}>
               <p>
-                Hi, I'm Abhyudit. I am an{" "}
+                Hi, I'm Abhyudit, an{" "}
                 <span style={{ color: "#00FFFF", fontWeight: "600" }}>
                   AI/ML Engineer
                 </span>{" "}
-                specializing in computer vision, RAG pipelines, and LLM integration.
-                My focus is on turning raw data into{" "}
-                <span style={{ color: "#00FFFF", fontWeight: "600" }}>
-                  real-world impact
-                </span>, whether that means engineering a ResNet50 vision model for
-                an award-winning IoT aquaculture system or redesigning enterprise AI
-                infrastructure to{" "}
+                who builds AI systems that hold up in real products. At NAVIO, I
+                migrated a live shipping platform's LLM workflows from OpenAI to
+                Gemini, combining model routing, caching, and concurrency controls to{" "}
                 <span style={{ color: "#9F2B68", fontWeight: "600" }}>
-                  cut inference costs by 90%
-                </span>.
+                  cut inference costs by about 90%
+                </span>. I also built vision-based extraction for complex bills of lading.
               </p>
               <p>
-                Right now, I am obsessed with the shift from{" "}
-                <span style={{ color: "#9F2B68", fontWeight: "600" }}>
-                  static AI to autonomous systems
-                </span>.
+                My computer vision work spans research and deployment. At Dr. Fish,
+                I trained a TensorFlow ResNet50 disease classifier to 95% accuracy,
+                deployed it on Hugging Face, and reduced inference latency from
+                200 ms to 120 ms. I also co-authored IEEE-published research on
+                assistive indoor navigation using YOLOv12, MediaPipe, voice commands,
+                and spatial audio.
               </p>
               <p>
-                I am heavily focused on mastering{" "}
+                Today, I am building an evidence-backed CV screening system at
+                Infinite Computer Solutions and leading AI work on a posture-estimation
+                tool at CreoTech. Across computer vision, RAG, and LLM integration,
+                I focus on the full path from model to reliable workflow: data,
+                evaluation, APIs, deployment, and human review. I am especially
+                interested in{" "}
                 <span style={{ color: "#00FFFF", fontWeight: "600" }}>
-                  multi-agent orchestration, API integration, and deployment tools
+                  agent workflows and practical AI systems
                 </span>{" "}
-                (like FastAPI and Docker) to build intelligent systems that don't
-                just answer questions, but actually{" "}
-                <span style={{ color: "#00FFFF", fontWeight: "600" }}>
-                  execute complex workflows
-                </span>.
+                built with tools such as FastAPI and Docker.
               </p>
             </div>
           </div>

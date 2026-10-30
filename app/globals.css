@@ -164,17 +164,11 @@
 
 /* Hero Background Optimization */
 .hero-bg-layer {
-  background-image: url('/light-tech-circuit.jpg');
+  background-image: url('/hero-image.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-}
-
-@media (max-width: 767px) {
-  .hero-bg-layer {
-    background-image: url('/light-tech-circuit-mobile.jpg');
-  }
 }
 
 .final-bg-layer {

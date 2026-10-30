@@ -7,7 +7,7 @@ const experiences = [
     title: "Software Engineer (Traineeship)",
     company: "Infinite Computer Solutions",
     period: "08/2026 - Present",
-    logo: "",
+    logo: "/infinite-computer-solutions-logo.jpg",
     description: "Full-time enterprise training in full-stack development, data engineering, QA, and applied AI.",
     achievements: [
       "Built an AI CV Screening system that screens PDF CVs against approved job descriptions and presents evidence for recruiter review.",
