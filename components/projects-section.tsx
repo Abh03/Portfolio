@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import * as Dialog from "@radix-ui/react-dialog";
 
 type Project = {
@@ -125,18 +125,25 @@ const projects: Project[] = [
   },
 ];
 
-const half = Math.ceil(projects.length / 2);
-const leftColumnProjects = projects.slice(0, half);
-const rightColumnProjects = projects.slice(half);
+const aiMlProjectTitles = new Set([
+  "AI CV Screening",
+  "Brain Tissue Classification",
+  "Pneumonia Detection AI",
+  "Voice Gender Classification",
+  "Image Colorization",
+  "Movie4AllMoods",
+]);
 
-const loopedLeft = [...leftColumnProjects, ...leftColumnProjects];
-const loopedRight = [...rightColumnProjects, ...rightColumnProjects];
+const orderedProjects = [
+  ...projects.filter((project) => aiMlProjectTitles.has(project.title)),
+  ...projects.filter((project) => !aiMlProjectTitles.has(project.title)),
+];
 
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <button type="button" className="group mb-8 block w-full text-left cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300" aria-label={`View details for ${project.title}`}>
+        <button type="button" className="group block h-full w-full text-left cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300" aria-label={`View details for ${project.title}`}>
           <div className="bg-gray-900 rounded-lg overflow-hidden shadow-xl border border-[rgba(182,182,182,0.5)] hover:border-[#00FFFF] group-hover:shadow-[0_0_45px_rgba(0,255,255,0.5)] transition-all duration-300 group-hover:scale-105">
             <div className="aspect-video overflow-hidden">
               <img src={project.image} alt="" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
@@ -198,28 +205,24 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
 export function ProjectsSection() {
   const stickyContainerRef = useRef<HTMLDivElement>(null);
-  const leftColumnRef = useRef<HTMLDivElement>(null);
-  const rightColumnRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: -1000, y: -1000 });
   const sectionRef = useRef<HTMLElement>(null);
-  const [columnHeights, setColumnHeights] = useState({ left: 0, right: 0 });
+  const [scrollDistance, setScrollDistance] = useState(0);
   const [viewportHeight, setViewportHeight] = useState(0);
+  const reducedMotion = useReducedMotion();
 
 
   useEffect(() => {
-    const measureColumns = () => {
-      setColumnHeights({
-        left: (leftColumnRef.current?.scrollHeight ?? 0) / 2,
-        right: (rightColumnRef.current?.scrollHeight ?? 0) / 2,
-      });
+    const measureTrack = () => {
+      setScrollDistance(Math.max(0, (trackRef.current?.scrollWidth ?? 0) - window.innerWidth));
       setViewportHeight(window.innerHeight);
     };
 
-    measureColumns();
-    const resizeObserver = new ResizeObserver(measureColumns);
-    if (leftColumnRef.current) resizeObserver.observe(leftColumnRef.current);
-    if (rightColumnRef.current) resizeObserver.observe(rightColumnRef.current);
-    window.addEventListener('resize', measureColumns);
+    measureTrack();
+    const resizeObserver = new ResizeObserver(measureTrack);
+    if (trackRef.current) resizeObserver.observe(trackRef.current);
+    window.addEventListener('resize', measureTrack);
 
     const handleMouseMove = (event: MouseEvent) => {
       if (sectionRef.current) {
@@ -238,7 +241,7 @@ export function ProjectsSection() {
 
     return () => {
       resizeObserver.disconnect();
-      window.removeEventListener('resize', measureColumns);
+      window.removeEventListener('resize', measureTrack);
       currentSectionRef?.removeEventListener('mousemove', handleMouseMove);
       currentSectionRef?.removeEventListener('mouseleave', handleMouseLeave);
     };
@@ -250,8 +253,7 @@ export function ProjectsSection() {
     offset: ["start start", "end end"],
   });
 
-  const yLeft = useTransform(scrollYProgress, [0, 1], [0, -columnHeights.left]);
-  const yRight = useTransform(scrollYProgress, [0, 1], [-columnHeights.right, 0]);
+  const x = useTransform(scrollYProgress, [0, 1], [0, -scrollDistance]);
   
 
   return (
@@ -283,34 +285,26 @@ export function ProjectsSection() {
         }}
       />
       
-      <div className="max-w-6xl mx-auto text-center mb-16">
+      <div className="max-w-6xl mx-auto text-center mb-10">
         <h2 className="text-5xl font-bold" style={{ fontFamily: "'Thiket'",color: "#00FFFF" }}>
           Featured Projects
         </h2>
+        <p className="mt-4 text-sm tracking-widest text-[#E5E7EB]">{reducedMotion ? "Swipe to explore →" : "Scroll to explore →"}</p>
       </div>
 
       <div
         ref={stickyContainerRef}
         className="relative"
-        style={{ height: columnHeights.left && columnHeights.right ? Math.max(columnHeights.left, columnHeights.right) + viewportHeight : "200vh" }}
+        style={{ height: reducedMotion ? "auto" : scrollDistance + viewportHeight || "200vh" }}
       >
         <div
-          className="sticky top-0 h-screen flex justify-center overflow-hidden gap-4 md:gap-15"
+          className={reducedMotion ? "overflow-x-auto pb-6" : "sticky top-0 flex h-screen items-center overflow-hidden"}
         >
-          <motion.div ref={leftColumnRef} className="w-full md:w-1/3" style={{ y: yLeft }}>
-            {loopedLeft.map((project, index) => (
-              <ProjectCard
-                key={`l-${index}`}
-                project={project}
-              />
-            ))}
-          </motion.div>
-          <motion.div ref={rightColumnRef} className="w-full md:w-1/3" style={{ y: yRight }}>
-            {loopedRight.map((project, index) => (
-              <ProjectCard
-                key={`r-${index}`}
-                project={project}
-              />
+          <motion.div ref={trackRef} className="flex w-max items-stretch gap-6 px-6 md:gap-8 md:px-12" style={{ x: reducedMotion ? 0 : x }}>
+            {orderedProjects.map((project) => (
+              <div key={project.title} className="w-[min(82vw,24rem)] shrink-0">
+                <ProjectCard project={project} />
+              </div>
             ))}
           </motion.div>
         </div>
