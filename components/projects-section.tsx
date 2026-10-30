@@ -4,40 +4,46 @@ import { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const projects = [
-    // ... your projects array remains the same
+  {
+    title: "AI CV Screening",
+    tech: "Python, FastAPI, Angular, PostgreSQL, Redis, Celery",
+    description:
+      "A recruiter workspace that screens PDF CVs against approved job descriptions, presents cited assessment evidence, and routes uncertain cases for human review.",
+    image: "/ai-cv-screening.svg",
+  },
   {
     title: "Brain Tissue Classification",
-    tech: "Python, PyTorch, Deep Learning",
+    tech: "Python, TensorFlow/Keras, HybridSN",
     description:
-      "Created HybridSN with spectral attention for brain tissue classification, achieving 94% F1-score.",
+      "Classified healthy and tumorous brain tissue from hyperspectral images with a spectral-attention HybridSN model; the report records a 94% test F1-score.",
     image: "/brain-hyperspectral-neural-network.jpg",
   },
   {
     title: "Pneumonia Detection AI",
-    tech: "Python, CNN, Django",
+    tech: "Python, TensorFlow, React, Django",
     description:
-      "Developed a CNN solution detecting pneumonia in lung X-rays with 96% accuracy and deployed it via a Django interface.",
+      "Built a CNN-based chest X-ray infection classifier with a React interface and Django integration.",
     image: "/pneumonia-detection-ai.png",
   },
   {
     title: "Image Colorization",
-    tech: "Python, UNet, OpenCV",
+    tech: "Python, PyTorch, U-Net",
     description:
-      "Implemented a UNet to colorize grayscale images, trained on the Places365 dataset for strong generalization.",
+      "Trained a U-Net to predict color channels from grayscale images using CIFAR-10 and Places365, and compared MSE and MAE losses.",
     image: "/grayscale-to-color-transformation.png",
   },
   {
     title: "KUdos Sports Platform",
     tech: "React.js, Tailwind CSS, Firebase",
     description:
-      "A responsive platform for KU to track matches, book venues, and manage sports equipment.",
+      "A Kathmandu University sports platform with match updates, scheduling, venue booking, and equipment management.",
     image: "/kudos-sports-management-dashboard.jpg",
   },
   {
     title: "Tranzac Finance App",
-    tech: "Flutter, Dart, Data Visualization",
+    tech: "Flutter, Firebase, eSewa, Khalti",
     description:
-      "A cross-platform mobile app for personal finance tracking with data visualization of spending habits.",
+      "A finance app for payments, category budgets, and lending and borrowing records, integrating eSewa and Khalti with Firebase-backed data.",
     image: "/tranzac-finance-app-ui.jpg",
   },
   {
@@ -56,16 +62,16 @@ const projects = [
   },
   {
     title: "Voice Gender Classification",
-    tech: "Python, DSP, Scikit-learn",
+    tech: "Python, DSP, Random Forest",
     description:
-      "Designed a system using DSP to extract vocal features and trained a Random Forest model for real-time prediction.",
+      "Extracted voice features with digital signal processing and trained a Random Forest classifier for microphone-based predictions.",
     image: "/voice-classification-dsp.jpg",
   },
   {
     title: "Movie4AllMoods",
-    tech: "Django, Recommender Systems",
+    tech: "Django, PostgreSQL, Scikit-learn",
     description:
-      "A movie recommendation system using content-based and mood-based filtering for customized suggestions.",
+      "A movie recommendation site using user ratings and viewing history, with filters for mood, genre, release date, and runtime.",
     image: "/movie-recommendation-mood-filter.png",
   },
 ];
@@ -79,13 +85,11 @@ const loopedRight = [...rightColumnProjects, ...rightColumnProjects];
 
 const ProjectCard = ({
   project,
-  onClick,
 }: {
   project: (typeof projects)[0];
-  onClick: () => void;
 }) => {
   return (
-    <div className="group cursor-pointer mb-8" onClick={onClick}>
+    <div className="group mb-8">
       <div className="bg-gray-900 rounded-lg overflow-hidden shadow-xl border border-[rgba(182,182,182,0.5)] hover:border-[#00FFFF] group-hover:shadow-[0_0_45px_rgba(0,255,255,0.5)] transition-all duration-300 hover:scale-105"
       
       >
@@ -113,9 +117,6 @@ const ProjectCard = ({
 };
 
 export function ProjectsSection() {
-  const [selectedProject, setSelectedProject] = useState<
-    (typeof projects)[0] | null
-  >(null);
   const stickyContainerRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: -1000, y: -1000 });
   const sectionRef = useRef<HTMLElement>(null);
@@ -227,7 +228,6 @@ export function ProjectsSection() {
               <ProjectCard
                 key={`l-${index}`}
                 project={project}
-                onClick={() => setSelectedProject(project)}
               />
             ))}
           </motion.div>
@@ -236,7 +236,6 @@ export function ProjectsSection() {
               <ProjectCard
                 key={`r-${index}`}
                 project={project}
-                onClick={() => setSelectedProject(project)}
               />
             ))}
           </motion.div>
