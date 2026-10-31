@@ -124,8 +124,8 @@ export function AboutSection() {
       />
       {/* --- END OF CHANGES --- */}
       
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+      <div className="max-w-4xl mx-auto">
+        <div className="flex flex-col gap-16">
           {/* About Me Text Content */}
           <div className="space-y-8">
             <h2 className="text-5xl md:text-5xl font-bold mb-6" style={{ fontFamily: "'Thiket'", color: "#00FFFF" }}>
@@ -179,7 +179,7 @@ export function AboutSection() {
                   <h4 className="text-lg font-semibold mb-3" style={{ color: "#00FFFF", opacity: 0.9 }}>
                     {category.title}
                   </h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                     {category.skills.map((skill) => (
                       <div
                         key={skill.name}
