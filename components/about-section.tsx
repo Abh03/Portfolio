@@ -179,38 +179,25 @@ export function AboutSection() {
                   <h4 className="text-lg font-semibold mb-3" style={{ color: "#00FFFF", opacity: 0.9 }}>
                     {category.title}
                   </h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                  <div className="flex flex-wrap gap-2">
                     {category.skills.map((skill) => (
-                      <div
+                      <button
                         key={skill.name}
-                        className="p-2.5 rounded-md cursor-pointer transition-transform duration-300 hover:scale-105"
+                        type="button"
+                        aria-pressed={selectedSkill === skill.name}
+                        className="rounded-sm px-4 py-2 text-sm font-medium transition-transform duration-300 hover:scale-105"
                         style={{
-                          backgroundColor: "rgba(255, 255, 255, 0.05)",
-                          border: "1px solid rgba(255, 255, 255, 0.8)",
+                          backgroundColor: "rgba(182, 182, 182, 1)",
+                          color: "#000000ff",
                         }}
                         onClick={() =>
                           setSelectedSkill(
                             selectedSkill === skill.name ? null : skill.name
                           )
                         }
-                        onMouseEnter={e => {
-                          (e.currentTarget as HTMLDivElement).style.backgroundColor = "rgba(182, 182, 182, 0.4)";
-                        }}
-                        onMouseLeave={e => {
-                          (e.currentTarget as HTMLDivElement).style.backgroundColor = "rgba(255, 255, 255, 0.05)";
-                        }}
                       >
-                        <span
-                          className="w-full block text-center py-0.5 px-1 rounded-sm text-sm"
-                          style={{
-                            backgroundColor: "rgba(182, 182, 182, 1)",
-                            color: "#000000ff",
-                            fontWeight: "500"
-                          }}
-                        >
-                          {skill.name}
-                        </span>
-                      </div>
+                        {skill.name}
+                      </button>
                     ))}
                   </div>
                 </div>
