@@ -148,10 +148,10 @@ const ProjectCard = ({ project }: { project: Project }) => {
             <div className="aspect-video overflow-hidden">
               <img src={project.image} alt="" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
             </div>
-            <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2 text-[#E5E7EB] transition-colors duration-300 group-hover:text-[#00FFFF]">{project.title}</h3>
-              <p className="text-sm mb-3" style={{ color: "#9F2B68" }}>{project.tech}</p>
-              <p className="text-sm line-clamp-3" style={{ color: "#9CA3AF" }}>{project.description}</p>
+            <div className="p-6 sm:p-8">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-3 text-[#E5E7EB] transition-colors duration-300 group-hover:text-[#00FFFF]">{project.title}</h3>
+              <p className="text-sm sm:text-base mb-4" style={{ color: "#9F2B68" }}>{project.tech}</p>
+              <p className="text-sm sm:text-base line-clamp-3" style={{ color: "#9CA3AF" }}>{project.description}</p>
               <span className="inline-block mt-3 text-sm font-medium text-[#00FFFF]">View details →</span>
             </div>
           </div>
@@ -302,7 +302,7 @@ export function ProjectsSection() {
         >
           <motion.div ref={trackRef} className="flex w-max items-stretch gap-6 px-6 md:gap-8 md:px-12" style={{ x: reducedMotion ? 0 : x }}>
             {orderedProjects.map((project) => (
-              <div key={project.title} className="w-[min(82vw,24rem)] shrink-0">
+              <div key={project.title} className="w-[min(88vw,30rem)] shrink-0">
                 <ProjectCard project={project} />
               </div>
             ))}
