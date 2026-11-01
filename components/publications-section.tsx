@@ -47,7 +47,7 @@ export function PublicationsSection() {
       className="py-20 px-6 relative z-30 overflow-hidden"
       style={{
         backgroundImage: `
-          linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          radial-gradient(circle at 75% 8%, rgba(78, 171, 172, 0.16), transparent 46%), linear-gradient(rgba(8, 15, 27, 0.86), rgba(8, 15, 27, 0.86)),
           url('/window-bg.jpg')
         `,
         backgroundSize: 'cover',
@@ -57,14 +57,14 @@ export function PublicationsSection() {
       <div 
         className="absolute inset-0 -z-20"
         style={{
-          backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(rgba(132, 223, 212, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(132, 223, 212, 0.055) 1px, transparent 1px)",
           backgroundSize: "2rem 2rem",
         }}
       />
       <div
         className="absolute inset-0 -z-10"
         style={{
-          backgroundImage: "linear-gradient(rgba(0, 255, 255, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 1) 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(rgba(132, 223, 212, 0.34) 1px, transparent 1px), linear-gradient(90deg, rgba(132, 223, 212, 0.34) 1px, transparent 1px)",
           backgroundSize: "2rem 2rem",
           maskImage: `radial-gradient(circle 300px at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
           WebkitMaskImage: `radial-gradient(circle 125px at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
@@ -75,11 +75,11 @@ export function PublicationsSection() {
         <div className="text-center mb-16">
           <h2
             className="text-5xl md:text-5xl font-bold mb-6"
-            style={{ fontFamily: "'Thiket'", color: "#00FFFF" }}
+            style={{ fontFamily: "'Thiket'", color: "#84DFD4" }}
           >
             Research
           </h2>
-          <p className="text-xl" style={{ color: "#E5E7EB" }}>
+          <p className="text-xl" style={{ color: "#EDF4F5" }}>
             Advancing accessibility through Computer Vision and Deep Learning.
           </p>
         </div>
@@ -92,8 +92,8 @@ export function PublicationsSection() {
           <div
             className="p-8 rounded-lg shadow-2xl"
             style={{
-              backgroundColor: "#111829",
-              border: "1px solid rgba(182,182,182,0.5)",
+              backgroundColor: "#111D2B",
+              border: "1px solid rgba(153, 192, 202, 0.24)",
             }}
           >
             <div className="flex flex-col md:flex-row md:items-start justify-between mb-6 gap-4">
@@ -106,48 +106,48 @@ export function PublicationsSection() {
                   />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold mb-1" style={{ color: "#E5E7EB" }}>
+                  <h3 className="text-2xl font-bold mb-1" style={{ color: "#EDF4F5" }}>
                     {publication.title}
                   </h3>
-                  <p className="font-medium text-lg" style={{ color: "#00FFFF" }}>
+                  <p className="font-medium text-lg" style={{ color: "#84DFD4" }}>
                     {publication.status}
                   </p>
                 </div>
               </div>
               <div
                 className="px-3 py-1 rounded text-sm font-semibold self-start whitespace-nowrap"
-                style={{ border: "1px solid #9F2B68", color: "#9F2B68" }}
+                style={{ border: "1px solid #E8B978", color: "#E8B978" }}
               >
                 Published Research
               </div>
             </div>
 
-            <p className="text-lg mb-6 leading-relaxed" style={{ color: "#9CA3AF" }}>
+            <p className="text-lg mb-6 leading-relaxed" style={{ color: "#ACBAC8" }}>
               {publication.description}
             </p>
 
             <div className="flex flex-wrap gap-4 mb-8 text-sm">
-              <a href={publication.paperUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4" style={{ color: "#00FFFF" }}>
+              <a href={publication.paperUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4" style={{ color: "#84DFD4" }}>
                 Read paper
               </a>
-              <a href={publication.codeUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4" style={{ color: "#00FFFF" }}>
+              <a href={publication.codeUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4" style={{ color: "#84DFD4" }}>
                 View code
               </a>
-              <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4" style={{ color: "#00FFFF" }}>
+              <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4" style={{ color: "#84DFD4" }}>
                 DOI: {publication.doi}
               </a>
             </div>
 
             <div className="mb-8">
-              <h4 className="font-semibold text-xl mb-4" style={{ color: "#E5E7EB" }}>
+              <h4 className="font-semibold text-xl mb-4" style={{ color: "#EDF4F5" }}>
                 Key Research Highlights
               </h4>
               <ul className="space-y-3">
                 {publication.achievements.map((achievement, i) => (
-                  <li key={i} className="flex items-start gap-3 text-lg" style={{ color: "#9CA3AF" }}>
+                  <li key={i} className="flex items-start gap-3 text-lg" style={{ color: "#ACBAC8" }}>
                     <div
                       className="w-2 h-2 rounded-full mt-2.5 flex-shrink-0"
-                      style={{ backgroundColor: "#00FFFF", boxShadow: "0 0 8px #00FFFF" }}
+                      style={{ backgroundColor: "#84DFD4", boxShadow: "0 0 8px #84DFD4" }}
                     />
                     {achievement}
                   </li>
@@ -161,9 +161,9 @@ export function PublicationsSection() {
                   key={skill}
                   className="text-sm px-4 py-1.5 rounded-full font-medium"
                   style={{
-                    backgroundColor: "rgba(159, 43, 104, 0.2)",
-                    border: "1px solid rgba(159, 43, 104, 0.4)",
-                    color: "#E5E7EB",
+                    backgroundColor: "rgba(232, 185, 120, 0.1)",
+                    border: "1px solid rgba(232, 185, 120, 0.3)",
+                    color: "#EDF4F5",
                   }}
                 >
                   {skill}

@@ -10,35 +10,35 @@ const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <button type="button" className="group block h-full w-full text-left cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300" aria-label={`View details for ${project.title}`}>
-          <div className="bg-gray-900 rounded-lg overflow-hidden shadow-xl border border-[rgba(182,182,182,0.5)] hover:border-[#00FFFF] group-hover:shadow-[0_0_45px_rgba(0,255,255,0.5)] transition-all duration-300 group-hover:scale-105">
+        <button type="button" className="group block h-full w-full text-left cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#84DFD4]" aria-label={`View details for ${project.title}`}>
+          <div className="h-full overflow-hidden rounded-lg border border-[rgba(153,192,202,0.24)] bg-[#111D2B] shadow-[0_16px_45px_rgba(0,0,0,0.22)] transition-all duration-300 group-hover:scale-[1.02] group-hover:border-[#84DFD4] group-hover:shadow-[0_18px_50px_rgba(41,132,140,0.18)]">
             <div className="aspect-video overflow-hidden">
               <img src={project.image} alt="" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
             </div>
             <div className="p-6 sm:p-8">
-              <h3 className="text-xl sm:text-2xl font-semibold mb-3 text-[#E5E7EB] transition-colors duration-300 group-hover:text-[#00FFFF]">{project.title}</h3>
-              <p className="text-sm sm:text-base mb-4" style={{ color: "#9F2B68" }}>{project.tech}</p>
-              <p className="text-sm sm:text-base line-clamp-3" style={{ color: "#9CA3AF" }}>{project.description}</p>
-              <span className="inline-block mt-3 text-sm font-medium text-[#00FFFF]">View details →</span>
+              <h3 className="text-xl sm:text-2xl font-semibold mb-3 text-[#EDF4F5] transition-colors duration-300 group-hover:text-[#84DFD4]">{project.title}</h3>
+              <p className="text-sm sm:text-base mb-4" style={{ color: "#E8B978" }}>{project.tech}</p>
+              <p className="text-sm sm:text-base line-clamp-3" style={{ color: "#ACBAC8" }}>{project.description}</p>
+              <span className="inline-block mt-3 text-sm font-medium text-[#84DFD4]">View details →</span>
             </div>
           </div>
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm" />
-        <Dialog.Content className="fixed left-1/2 top-1/2 z-[101] w-[min(92vw,48rem)] max-h-[90vh] -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-xl border border-cyan-400/50 bg-[#111829] p-6 text-[#E5E7EB] shadow-[0_0_50px_rgba(0,255,255,0.2)] sm:p-8 focus:outline-none">
-          <Dialog.Close className="absolute right-4 top-3 rounded-md px-2 py-1 text-2xl text-[#E5E7EB] hover:text-[#00FFFF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300" aria-label="Close project details">×</Dialog.Close>
-          <Dialog.Title className="pr-10 text-2xl font-bold text-[#00FFFF] sm:text-3xl">{project.title}</Dialog.Title>
-          <p className="mt-2 text-sm text-[#d888b2]">{project.tech}</p>
-          <Dialog.Description className="mt-5 leading-relaxed text-[#E5E7EB]">{project.description}</Dialog.Description>
+        <Dialog.Overlay className="fixed inset-0 z-[100] bg-[#080F1B]/85 backdrop-blur-sm" />
+        <Dialog.Content className="fixed left-1/2 top-1/2 z-[101] w-[min(92vw,48rem)] max-h-[90vh] -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-xl border border-[#426477] bg-[#111D2B] p-6 text-[#EDF4F5] shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:p-8 focus:outline-none">
+          <Dialog.Close className="absolute right-4 top-3 rounded-md px-2 py-1 text-2xl text-[#EDF4F5] hover:text-[#84DFD4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#84DFD4]" aria-label="Close project details">×</Dialog.Close>
+          <Dialog.Title className="pr-10 text-2xl font-bold text-[#84DFD4] sm:text-3xl">{project.title}</Dialog.Title>
+          <p className="mt-2 text-sm text-[#E8B978]">{project.tech}</p>
+          <Dialog.Description className="mt-5 leading-relaxed text-[#EDF4F5]">{project.description}</Dialog.Description>
 
           <div className="mt-7">
             <h4 className="mb-3 text-lg font-semibold">Architecture</h4>
             <ol className="flex flex-wrap items-center gap-2" aria-label={`${project.title} architecture flow`}>
               {project.architecture.map((step, index) => (
                 <li key={step} className="flex items-center gap-2">
-                  {index > 0 && <span aria-hidden="true" className="text-[#00FFFF]">→</span>}
-                  <span className="rounded-md border border-cyan-400/40 bg-cyan-400/10 px-3 py-2 text-sm">{step}</span>
+                  {index > 0 && <span aria-hidden="true" className="text-[#84DFD4]">→</span>}
+                  <span className="rounded-md border border-[#84DFD4]/30 bg-[#84DFD4]/10 px-3 py-2 text-sm">{step}</span>
                 </li>
               ))}
             </ol>
@@ -47,20 +47,20 @@ const ProjectCard = ({ project }: { project: Project }) => {
           <div className="mt-7 grid gap-6 sm:grid-cols-2">
             <div>
               <h4 className="mb-3 text-lg font-semibold">What I built</h4>
-              <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-[#cbd5e1]">
+              <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-[#ACBAC8]">
                 {project.implemented.map((item) => <li key={item}>{item}</li>)}
               </ul>
             </div>
             <div>
               <h4 className="mb-3 text-lg font-semibold">Results and scope</h4>
-              <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-[#cbd5e1]">
+              <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-[#ACBAC8]">
                 {project.results.map((item) => <li key={item}>{item}</li>)}
               </ul>
             </div>
           </div>
 
           {project.link && (
-            <a href={project.link} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex rounded-md border border-[#00FFFF] px-4 py-2 text-sm font-semibold text-[#00FFFF] hover:bg-cyan-400/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300">
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex rounded-md border border-[#84DFD4] px-4 py-2 text-sm font-semibold text-[#84DFD4] hover:bg-[#84DFD4]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#84DFD4]">
               View source on GitHub ↗
             </a>
           )}
@@ -129,7 +129,7 @@ export function ProjectsSection() {
       className="relative z-30 py-20"
   style={{
     backgroundImage: `
-      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      radial-gradient(circle at 75% 8%, rgba(78, 171, 172, 0.16), transparent 46%), linear-gradient(rgba(8, 15, 27, 0.86), rgba(8, 15, 27, 0.86)),
       url('/window-bg-pot.jpg')
     `,
     backgroundSize: 'cover',
@@ -138,14 +138,14 @@ export function ProjectsSection() {
       <div 
         className="absolute inset-0 -z-20"
         style={{
-            backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)",
+            backgroundImage: "linear-gradient(rgba(132, 223, 212, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(132, 223, 212, 0.055) 1px, transparent 1px)",
             backgroundSize: "2rem 2rem",
         }}
       />
       <div
         className="absolute inset-0 -z-10"
         style={{
-            backgroundImage: "linear-gradient(rgba(0, 255, 255, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 1) 1px, transparent 1px)",
+            backgroundImage: "linear-gradient(rgba(132, 223, 212, 0.34) 1px, transparent 1px), linear-gradient(90deg, rgba(132, 223, 212, 0.34) 1px, transparent 1px)",
             backgroundSize: "2rem 2rem",
             maskImage: `radial-gradient(circle 300px at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
             WebkitMaskImage: `radial-gradient(circle 125px at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
@@ -153,10 +153,10 @@ export function ProjectsSection() {
       />
       
       <div className="max-w-6xl mx-auto text-center mb-10">
-        <h2 className="text-5xl font-bold" style={{ fontFamily: "'Thiket'",color: "#00FFFF" }}>
+        <h2 className="text-5xl font-bold" style={{ fontFamily: "'Thiket'",color: "#84DFD4" }}>
           Projects
         </h2>
-        <p className="mt-4 text-sm tracking-widest text-[#E5E7EB]">{reducedMotion ? "Swipe to explore →" : "Scroll to explore →"}</p>
+        <p className="mt-4 text-sm tracking-widest text-[#EDF4F5]">{reducedMotion ? "Swipe to explore →" : "Scroll to explore →"}</p>
       </div>
 
       <div

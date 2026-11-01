@@ -87,7 +87,7 @@ export function ContactSection() {
       className="py-20 px-6 relative z-30 overflow-hidden" // Add overflow-hidden
   style={{
     backgroundImage: `
-      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      radial-gradient(circle at 75% 8%, rgba(232, 185, 120, 0.13), transparent 46%), linear-gradient(rgba(8, 15, 27, 0.86), rgba(8, 15, 27, 0.86)),
       url('/window-bg.jpg')
     `,
     backgroundSize: 'cover',
@@ -98,14 +98,14 @@ export function ContactSection() {
       <div 
         className="absolute inset-0 -z-20"
         style={{
-          backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(rgba(132, 223, 212, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(132, 223, 212, 0.055) 1px, transparent 1px)",
           backgroundSize: "2rem 2rem",
         }}
       />
       <div
         className="absolute inset-0 -z-10"
         style={{
-          backgroundImage: "linear-gradient(rgba(0, 255, 255, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 1) 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(rgba(132, 223, 212, 0.34) 1px, transparent 1px), linear-gradient(90deg, rgba(132, 223, 212, 0.34) 1px, transparent 1px)",
           backgroundSize: "2rem 2rem",
           maskImage: `radial-gradient(circle 300px at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
           WebkitMaskImage: `radial-gradient(circle 125px at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
@@ -119,13 +119,13 @@ export function ContactSection() {
           <div className="mb-16">
             <h2
               className="text-5xl md:text-5xl font-bold mb-6"
-              style={{ fontFamily: "'Thiket'", color: "#00FFFF" }}
+              style={{ fontFamily: "'Thiket'", color: "#84DFD4" }}
             >
               Let's Build the Future
             </h2>
             <p
               className="text-xl leading-relaxed mx-auto max-w-2xl"
-              style={{ color: "#E5E7EB" }}
+              style={{ color: "#EDF4F5" }}
             >
               I am open to AI and Machine Learning opportunities, including remote
               roles and relocation. If you have a project or a role where my skills
@@ -138,13 +138,13 @@ export function ContactSection() {
             <div
               className="p-8 rounded-lg text-left"
               style={{
-                backgroundColor: "#111829",
-                border: "1px solid rgba(182,182,182,0.5)",
+                backgroundColor: "#111D2B",
+                border: "1px solid rgba(153, 192, 202, 0.24)",
               }}
             >
               <h3
                 className="text-2xl font-semibold mb-6"
-                style={{ color: "#E5E7EB" }}
+                style={{ color: "#EDF4F5" }}
               >
                 Get In Touch
               </h3>
@@ -153,18 +153,18 @@ export function ContactSection() {
                   <div key={contact.label} className="flex items-center gap-4">
                     <div
                       className="w-10 h-10 rounded-full flex items-center justify-center"
-                      style={{ backgroundColor: "rgba(0, 255, 255, 0.1)" }}
+                      style={{ backgroundColor: "rgba(132, 223, 212, 0.12)" }}
                     >
                       <contact.icon
                         className="w-5 h-5"
-                        style={{ color: "#00FFFF" }}
+                        style={{ color: "#84DFD4" }}
                       />
                     </div>
                     <div>
-                      <p className="text-sm" style={{ color: "#9CA3AF" }}>
+                      <p className="text-sm" style={{ color: "#ACBAC8" }}>
                         {contact.label}
                       </p>
-                      <p className="font-medium" style={{ color: "#E5E7EB" }}>
+                      <p className="font-medium" style={{ color: "#EDF4F5" }}>
                         {contact.value}
                       </p>
                     </div>
@@ -177,18 +177,18 @@ export function ContactSection() {
             <div
               className="p-8 rounded-lg text-left flex flex-col justify-between"
               style={{
-                backgroundColor: "#111829",
-                border: "1px solid rgba(182,182,182,0.5)",
+                backgroundColor: "#111D2B",
+                border: "1px solid rgba(153, 192, 202, 0.24)",
               }}
             >
               <div>
                 <h3
                   className="text-2xl font-semibold mb-6"
-                  style={{ color: "#E5E7EB" }}
+                  style={{ color: "#EDF4F5" }}
                 >
                   Ready to Collaborate?
                 </h3>
-                <p className="mb-8" style={{ color: "#9CA3AF" }}>
+                <p className="mb-8" style={{ color: "#ACBAC8" }}>
                   Whether it's a groundbreaking ML project or an innovative
                   startup opportunity, let's discuss how we can create something
                   amazing together.
@@ -199,9 +199,9 @@ export function ContactSection() {
                   onClick={handleEmailCopy}
                   className="w-full text-center px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105"
                   style={{
-                    backgroundColor: "#00FFFF",
+                    backgroundColor: "#84DFD4",
                     color: "#000000",
-                    boxShadow: "0 0 15px rgba(0, 255, 255, 0.5)",
+                    boxShadow: "0 0 15px rgba(132, 223, 212, 0.22)",
                   }}
                 >
                   {emailCopied ? "Email Copied!" : "Copy Email Address"}
@@ -213,7 +213,7 @@ export function ContactSection() {
           <a
             href="/Abhyudit-Adhikari_AI-ML_Engineer.pdf"
             download
-            className="mb-12 inline-flex rounded-lg border border-[#00FFFF] px-6 py-3 font-medium text-[#00FFFF] transition-colors hover:bg-cyan-400/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+            className="mb-12 inline-flex rounded-lg border border-[#84DFD4] px-6 py-3 font-medium text-[#84DFD4] transition-colors hover:bg-[#84DFD4]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#84DFD4]"
           >
             Download CV
           </a>
@@ -229,9 +229,9 @@ export function ContactSection() {
                 rel="noopener noreferrer"
                 className="w-16 h-16 rounded-full flex items-center justify-center text-2xl transition-all duration-300 hover:scale-110"
                 style={{
-                  backgroundColor: "#111829",
+                  backgroundColor: "#111D2B",
                   border: "1px solid rgba(255, 255, 255, 0.1)",
-                  color: "#E5E7EB",
+                  color: "#EDF4F5",
                 }}
               >
                 <social.icon className="w-8 h-8" />

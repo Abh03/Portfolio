@@ -41,7 +41,7 @@ export function AboutSection() {
   className="min-h-screen flex items-center justify-center px-6 py-20 relative z-30 overflow-hidden"
   style={{
     backgroundImage: `
-      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      radial-gradient(circle at 75% 8%, rgba(78, 171, 172, 0.16), transparent 46%), linear-gradient(rgba(8, 15, 27, 0.86), rgba(8, 15, 27, 0.86)),
       url('/window-bg.jpg')
     `,
     backgroundSize: 'cover',
@@ -55,7 +55,7 @@ export function AboutSection() {
       <div 
         className="absolute inset-0 -z-20"
         style={{
-          backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(rgba(132, 223, 212, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(132, 223, 212, 0.055) 1px, transparent 1px)",
           backgroundSize: "2rem 2rem",
         }}
       />
@@ -64,7 +64,7 @@ export function AboutSection() {
       <div
         className="absolute inset-0 -z-10"
         style={{
-          backgroundImage: "linear-gradient(rgba(0, 255, 255, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 1) 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(rgba(132, 223, 212, 0.34) 1px, transparent 1px), linear-gradient(90deg, rgba(132, 223, 212, 0.34) 1px, transparent 1px)",
           backgroundSize: "2rem 2rem",
           // The mask that reveals this bright grid layer
           maskImage: `radial-gradient(circle 300px at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
@@ -77,19 +77,19 @@ export function AboutSection() {
         <div className="flex flex-col gap-16">
           {/* About Me Text Content */}
           <div className="space-y-8">
-            <h2 className="text-5xl md:text-5xl font-bold mb-6" style={{ fontFamily: "'Thiket'", color: "#00FFFF" }}>
+            <h2 className="text-5xl md:text-5xl font-bold mb-6" style={{ fontFamily: "'Thiket'", color: "#84DFD4" }}>
               About Me
             </h2>
-            <div className="space-y-6 text-lg leading-relaxed" style={{ color: "#E5E7EB" }}>
+            <div className="space-y-6 text-lg leading-relaxed" style={{ color: "#EDF4F5" }}>
               <p>
                 Hi, I'm Abhyudit, an{" "}
-                <span style={{ color: "#00FFFF", fontWeight: "600" }}>
+                <span style={{ color: "#84DFD4", fontWeight: "600" }}>
                   AI/ML Engineer
                 </span>{" "}
                 who ships LLM systems to production. At NAVIO, I migrated shipment
                 email parsing from OpenAI to Gemini, using model routing, Redis
                 caching, and database locking to{" "}
-                <span style={{ color: "#9F2B68", fontWeight: "600" }}>
+                <span style={{ color: "#E8B978", fontWeight: "600" }}>
                   cut LLM costs by about 90%
                 </span>. I also built vision-based extraction for complex bills of lading.
               </p>
@@ -111,33 +111,24 @@ export function AboutSection() {
                 I focus on the full path from model to reliable workflow: data,
                 evaluation, APIs, deployment, and human review. I am especially
                 interested in{" "}
-                <span style={{ color: "#00FFFF", fontWeight: "600" }}>
+                <span style={{ color: "#84DFD4", fontWeight: "600" }}>
                   agent workflows and practical AI systems
                 </span>{" "}
                 built with tools such as FastAPI and Docker.
-              </p>
-              <p>
-                I earned a Bachelor of Engineering in Computer Engineering from
-                Kathmandu University (Feb 2022–Jul 2026; CGPA 3.60/4.0). I am also
-                completing IIT Madras Pravartak&apos;s Advanced Engineering Program in
-                AI Agent Workflows &amp; Agentic Systems (Apr–Nov 2026, expected).
-                Coursework covers multi-agent collaboration, RAG and context
-                engineering with pgvector and hybrid retrieval, and orchestration
-                and observability with LangChain, LangGraph, and LangSmith.
               </p>
             </div>
           </div>
 
           {/* Interactive Skills Grid */}
           <div>
-            <h3 className="text-4xl font-bold mb-8" style={{fontFamily: "'Thiket'", color: "#E5E7EB" }}>
+            <h3 className="text-4xl font-bold mb-8" style={{fontFamily: "'Thiket'", color: "#EDF4F5" }}>
               Skills
             </h3>
             
             <div className="space-y-6">
               {skillCategories.map((category) => (
                 <div key={category.title}>
-                  <h4 className="text-lg font-semibold mb-3" style={{ color: "#00FFFF", opacity: 0.9 }}>
+                  <h4 className="text-lg font-semibold mb-3" style={{ color: "#84DFD4", opacity: 0.9 }}>
                     {category.title}
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -148,8 +139,8 @@ export function AboutSection() {
                         aria-pressed={selectedSkill === skill.name}
                         className="rounded-sm px-4 py-2 text-sm font-medium transition-transform duration-300 hover:scale-105"
                         style={{
-                          backgroundColor: "rgba(182, 182, 182, 1)",
-                          color: "#000000ff",
+                          backgroundColor: "rgba(132, 223, 212, 0.12)",
+                          color: "#D5F3EF",
                         }}
                         onClick={() =>
                           setSelectedSkill(
@@ -171,13 +162,13 @@ export function AboutSection() {
                 className="mt-6 p-5 rounded-lg"
                 style={{
                   backgroundColor: "rgba(255, 255, 255, 0.1)",
-                  border: "1px solid #00FFFF",
+                  border: "1px solid #84DFD4",
                 }}
               >
-                <h4 className="text-lg font-semibold mb-2" style={{ color: "#00FFFF" }}>
+                <h4 className="text-lg font-semibold mb-2" style={{ color: "#84DFD4" }}>
                   {selectedSkill}
                 </h4>
-                <p className="text-sm" style={{ color: "#E5E7EB" }}>
+                <p className="text-sm" style={{ color: "#EDF4F5" }}>
                   {allSkills.find((s) => s.name === selectedSkill)?.description}
                 </p>
               </div>

@@ -9,8 +9,8 @@ export function EducationSection() {
   const [mousePosition, setMousePosition] = useState({ x: -1000, y: -1000 });
   const sectionRef = useRef<HTMLElement>(null);
 
-  const themeColor = "#00FFFF"; // Cyan for institutions and accents
-  const dateColor = "#9F2B68";  // Reddish for dates
+  const themeColor = "#84DFD4";
+  const dateColor = "#E8B978";
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -40,7 +40,7 @@ export function EducationSection() {
       className="py-20 px-6 relative z-30 overflow-hidden"
       style={{
         backgroundImage: `
-          linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          radial-gradient(circle at 75% 8%, rgba(78, 171, 172, 0.16), transparent 46%), linear-gradient(rgba(8, 15, 27, 0.86), rgba(8, 15, 27, 0.86)),
           url('/window-bg.jpg')
         `,
         backgroundSize: 'cover',
@@ -50,14 +50,14 @@ export function EducationSection() {
       <div 
         className="absolute inset-0 -z-20"
         style={{
-          backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(rgba(132, 223, 212, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(132, 223, 212, 0.055) 1px, transparent 1px)",
           backgroundSize: "2rem 2rem",
         }}
       />
       <div
         className="absolute inset-0 -z-10"
         style={{
-          backgroundImage: "linear-gradient(rgba(0, 255, 255, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 1) 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(rgba(132, 223, 212, 0.34) 1px, transparent 1px), linear-gradient(90deg, rgba(132, 223, 212, 0.34) 1px, transparent 1px)",
           backgroundSize: "2rem 2rem",
           maskImage: `radial-gradient(circle 300px at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
           WebkitMaskImage: `radial-gradient(circle 125px at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
@@ -96,7 +96,7 @@ export function EducationSection() {
               }}
               className="p-8 rounded-lg transition-all duration-300 hover:scale-[1.02] group"
               style={{
-                backgroundColor: "#111829",
+                backgroundColor: "#111D2B",
                 border: `1px solid ${themeColor}44`,
                 boxShadow: `0 0 20px ${themeColor}11`,
               }}
@@ -110,7 +110,7 @@ export function EducationSection() {
                   />
                 </div>
                 <div className="flex-grow">
-                  <h3 className="text-xl font-bold group-hover:text-white transition-colors mb-2" style={{ color: "#E5E7EB" }}>
+                  <h3 className="text-xl font-bold group-hover:text-white transition-colors mb-2" style={{ color: "#EDF4F5" }}>
                     {edu.degree}
                   </h3>
                   <div className="flex justify-between items-center gap-4">
@@ -127,7 +127,7 @@ export function EducationSection() {
                 </div>
               </div>
 
-              <p className="text-lg leading-relaxed" style={{ color: "#9CA3AF" }}>
+              <p className="text-lg leading-relaxed" style={{ color: "#ACBAC8" }}>
                 {edu.description}
               </p>
               <div 

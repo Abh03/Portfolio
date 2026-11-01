@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { HeroSection } from "@/components/hero-section";
 import { AboutSection } from "@/components/about-section";
+import { EducationSection } from "@/components/education-section";
 import { PublicationsSection } from "@/components/publications-section";
 import { ProjectsSection } from "@/components/projects-section";
 import { ExperienceSection } from "@/components/experience-section";
@@ -51,7 +52,7 @@ export default function Portfolio() {
   // The old useEffect is no longer needed here, as HeroSection handles its own scroll logic
   
   return (
-    <main className="relative bg-black">
+    <main className="relative bg-[#080F1B]">
       {/* 3. Pass the function as a prop to HeroSection */}
       <HeroSection onAnimationComplete={handleAnimationComplete} />
       
@@ -61,6 +62,7 @@ export default function Portfolio() {
         }`}
       >
         <AboutSection />
+        <EducationSection />
         <PublicationsSection />
         <ExperienceSection />
         <ProjectsSection />

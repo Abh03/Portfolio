@@ -66,7 +66,7 @@ export function ExperienceSection() {
       className="min-h-screen py-20 px-6 relative z-30 overflow-hidden"
   style={{
     backgroundImage: `
-      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      radial-gradient(circle at 75% 8%, rgba(78, 171, 172, 0.16), transparent 46%), linear-gradient(rgba(8, 15, 27, 0.86), rgba(8, 15, 27, 0.86)),
       url('/window-bg.jpg')
     `,
     backgroundSize: 'cover',
@@ -75,14 +75,14 @@ export function ExperienceSection() {
       <div 
         className="absolute inset-0 -z-20"
         style={{
-          backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(rgba(132, 223, 212, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(132, 223, 212, 0.055) 1px, transparent 1px)",
           backgroundSize: "2rem 2rem",
         }}
       />
       <div
         className="absolute inset-0 -z-10"
         style={{
-          backgroundImage: "linear-gradient(rgba(0, 255, 255, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 1) 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(rgba(132, 223, 212, 0.34) 1px, transparent 1px), linear-gradient(90deg, rgba(132, 223, 212, 0.34) 1px, transparent 1px)",
           backgroundSize: "2rem 2rem",
           maskImage: `radial-gradient(circle 300px at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
           WebkitMaskImage: `radial-gradient(circle 125px at ${mousePosition.x}px ${mousePosition.y}px, black, transparent)`,
@@ -95,11 +95,11 @@ export function ExperienceSection() {
           <div className="text-center mb-16">
             <h2
               className="text-5xl md:text-5xl font-bold mb-6"
-              style={{ fontFamily: "'Thiket'", color: "#00FFFF" }}
+              style={{ fontFamily: "'Thiket'", color: "#84DFD4" }}
             >
               Experience
             </h2>
-            <p className="text-xl" style={{ color: "#E5E7EB" }}>
+            <p className="text-xl" style={{ color: "#EDF4F5" }}>
               Building the future through leadership and innovation.
             </p>
           </div>
@@ -107,13 +107,13 @@ export function ExperienceSection() {
           <div ref={timelineRef} className="relative">
             <div
               className="absolute left-2 w-1 top-0 bottom-0"
-              style={{ backgroundColor: "rgba(159, 43, 104, 0.3)" }}
+              style={{ backgroundColor: "rgba(232, 185, 120, 0.24)" }}
             />
             <div
               className="absolute left-2 w-1 top-0"
               style={{
-                backgroundColor: "#00FFFF",
-                boxShadow: "0 0 10px rgba(0, 255, 255, 1)",
+                backgroundColor: "#84DFD4",
+                boxShadow: "0 0 10px rgba(132, 223, 212, 0.58)",
                 height: `${timelineProgress * 100}%`,
                 transition: "height 0.5s ease-out",
               }}
@@ -138,16 +138,16 @@ export function ExperienceSection() {
                     style={{
                       borderColor: "#000000",
                       backgroundColor: visibleItems.includes(index)
-                        ? "#00FFFF"
-                        : "#9F2B68",
+                        ? "#84DFD4"
+                        : "#E8B978",
                       transition: "background-color 0.5s ease",
                     }}
                   />
                   <div
                     className="p-6 rounded-lg"
                     style={{
-                      backgroundColor: "#111829",
-                      border: "1px solid rgba(182,182,182,0.5)",
+                      backgroundColor: "#111D2B",
+                      border: "1px solid rgba(153, 192, 202, 0.24)",
                     }}
                   >
                     <div className="flex items-start justify-between mb-4">
@@ -160,36 +160,36 @@ export function ExperienceSection() {
                             style={{ backgroundColor: "#FFFFFF" }}
                           />
                         ) : (
-                          <div className="w-12 h-12 rounded-full flex items-center justify-center font-bold flex-shrink-0" style={{ backgroundColor: "#00FFFF", color: "#111829" }} aria-hidden="true">
+                          <div className="w-12 h-12 rounded-full flex items-center justify-center font-bold flex-shrink-0" style={{ backgroundColor: "#84DFD4", color: "#111D2B" }} aria-hidden="true">
                             {exp.company.slice(0, 2).toUpperCase()}
                           </div>
                         )}
                         <div>
                           <h3
                             className="text-xl font-semibold"
-                            style={{ color: "#E5E7EB" }}
+                            style={{ color: "#EDF4F5" }}
                           >
                             {exp.title}
                           </h3>
-                          <p className="font-medium" style={{ color: "#00FFFF" }}>
+                          <p className="font-medium" style={{ color: "#84DFD4" }}>
                             {exp.company}
                           </p>
                         </div>
                       </div>
                       <span
                         className="text-xs px-2 py-1 rounded flex-shrink-0"
-                        style={{ border: "1px solid #9F2B68", color: "#9F2B68" }}
+                        style={{ border: "1px solid #E8B978", color: "#E8B978" }}
                       >
                         {exp.period}
                       </span>
                     </div>
-                    <p className="mb-4" style={{ color: "#9CA3AF" }}>
+                    <p className="mb-4" style={{ color: "#ACBAC8" }}>
                       {exp.description}
                     </p>
                     <div className="mb-4">
                       <h4
                         className="font-semibold mb-2"
-                        style={{ color: "#E5E7EB" }}
+                        style={{ color: "#EDF4F5" }}
                       >
                         Key Achievements
                       </h4>
@@ -198,11 +198,11 @@ export function ExperienceSection() {
                           <li
                             key={i}
                             className="flex items-start gap-2 text-sm"
-                            style={{ color: "#9CA3AF" }}
+                            style={{ color: "#ACBAC8" }}
                           >
                             <div
                               className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0"
-                              style={{ backgroundColor: "#00FFFF" }}
+                              style={{ backgroundColor: "#84DFD4" }}
                             />
                             {achievement}
                           </li>
@@ -215,8 +215,8 @@ export function ExperienceSection() {
                           key={skill}
                           className="text-xs px-3 py-1 rounded-full"
                           style={{
-                            backgroundColor: "rgba(159, 43, 104, 0.2)",
-                            color: "#E5E7EB",
+                            backgroundColor: "rgba(232, 185, 120, 0.1)",
+                            color: "#EDF4F5",
                           }}
                         >
                           {skill}

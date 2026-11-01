@@ -22,7 +22,7 @@ const TypewriterEffect = () => {
   }, [fullText]);
 
   return (
-    <div className="text-left font-mono text-xl md:text-2xl text-black whitespace-pre-wrap">
+    <div className="text-left font-mono text-xl md:text-2xl text-[#142235] whitespace-pre-wrap">
       {text}
       <span className="animate-ping">_</span>
     </div>
@@ -101,7 +101,7 @@ export function HeroSection({ onAnimationComplete }: { onAnimationComplete: (isC
         <div 
           className="absolute inset-0 z-20" 
           style={{ 
-            backgroundColor: "#0A0A14",
+            backgroundColor: "#080F1B",
           }}
         >
           {/* Centered container for the text cutout */}
