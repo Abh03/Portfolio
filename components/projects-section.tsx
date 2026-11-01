@@ -4,140 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import * as Dialog from "@radix-ui/react-dialog";
 
-type Project = {
-  title: string;
-  tech: string;
-  description: string;
-  image: string;
-  architecture: string[];
-  implemented: string[];
-  results: string[];
-  link?: string;
-};
-
-const projects: Project[] = [
-  {
-    title: "AI CV Screening",
-    tech: "Python, FastAPI, Angular/TypeScript, PostgreSQL/pgvector, Redis, Celery, Docker, Gemini",
-    description:
-      "A four-stage recruiter platform for approved job descriptions and PDF CVs, with OCR, eligibility rules, hybrid retrieval, citation-verified LLM assessments, versioned scoring, and human-review routing.",
-    image: "/ai-cv-screening.svg",
-    link: "https://github.com/Abh03/AI-CV-Screening/",
-    architecture: ["Approved JD + PDF CVs", "OCR and text extraction", "Eligibility + hybrid retrieval", "Cited LLM assessment", "Recruiter review"],
-    implemented: [
-      "Versioned job requirements, single-CV and campaign intake, and OCR fallback with Tesseract and Poppler for scanned PDFs.",
-      "SentenceTransformer embeddings in pgvector plus full-text search, reciprocal-rank fusion, and CrossEncoder reranking.",
-      "Citation checks, versioned scoring, saved recruiter decisions, exports, and Redis/Celery background work.",
-    ],
-    results: ["Limits model assessment to at most 15 candidates per job; unsupported or incomplete assessments go to human review.", "No screening-accuracy benchmark is reported."],
-  },
-  {
-    title: "Brain Tissue Classification",
-    tech: "Python, TensorFlow/Keras, HybridSN",
-    description:
-      "Ongoing research classifying healthy and tumorous brain tissue with spectral-attention HybridSN, HSI calibration, normalization, patch extraction, and a reported 94% F1-score.",
-    image: "/brain-hyperspectral-neural-network.jpg",
-    architecture: ["HISTOLOGY HSI-GB images", "Calibrate and normalize", "Extract spectral-spatial patches", "HybridSN + spectral attention", "Tissue class"],
-    implemented: ["A TensorFlow/Keras HybridSN model that learns spatial and spectral features.", "Patch-based preprocessing and data loading for memory-constrained training."],
-    results: ["The report records 93.54% accuracy and a 94% test F1-score on healthy versus tumorous tissue.", "Further validation on larger, more diverse data remains future work."],
-  },
-  {
-    title: "Pneumonia Detection AI",
-    tech: "Python, TensorFlow/Keras, U-Net, React/Vite, Django REST, OpenCV",
-    description:
-      "Built a CNN-based chest X-ray infection classifier with 96% accuracy, a React interface, and Django integration.",
-    image: "/pneumonia-detection-ai.png",
-    link: "https://github.com/aavashlamichhane/Lung-Disease-Detection",
-    architecture: ["Chest X-ray upload", "React + Django API", "U-Net segmentation", "Mask and bounding boxes", "Prediction + confidence"],
-    implemented: ["TensorFlow/Keras model for binary normal-versus-infection analysis.", "Django upload endpoint and React interface showing the input, annotated output, confidence, and highlighted regions."],
-    results: ["96% project-reported accuracy for binary detection.", "The report notes that the model does not distinguish specific infection types or establish clinical validity."],
-  },
-  {
-    title: "Image Colorization",
-    tech: "Python, PyTorch, U-Net",
-    description:
-      "Trained a U-Net to predict color channels from grayscale images using CIFAR-10 and Places365, and compared MSE and MAE losses.",
-    image: "/grayscale-to-color-transformation.png",
-    architecture: ["Grayscale image", "L channel in Lab space", "PyTorch U-Net", "Predict a/b channels", "Color image"],
-    implemented: ["A supervised colorization pipeline trained with CIFAR-10 and Places365.", "Compared MSE and MAE losses using PSNR, SSIM, and visual inspection."],
-    results: ["The Places365 MAE run reports 24.89 dB PSNR and 0.893 SSIM.", "MSE scored higher on CIFAR-10 metrics; MAE produced more vibrant images in visual comparison."],
-  },
-  {
-    title: "KUdos Sports Platform",
-    tech: "React, Tailwind CSS, Firebase Auth, Firestore",
-    description:
-      "A Kathmandu University sports platform with match updates, scheduling, venue booking, and equipment management.",
-    image: "/kudos-sports-management-dashboard.jpg",
-    architecture: ["React + Tailwind UI", "Firebase authentication", "Firestore data", "Matches, venues, equipment"],
-    implemented: ["Live match updates and scheduling, equipment booking, and venue management.", "Role-based access for students and administrators, with a responsive interface."],
-    results: ["The report describes a working centralized sports-management platform for Kathmandu University; it gives no measured usage or performance figures."],
-  },
-  {
-    title: "Tranzac Finance App",
-    tech: "Flutter, Firebase, eSewa, Khalti",
-    description:
-      "A finance app for payments, category budgets, and lending and borrowing records, integrating eSewa and Khalti with Firebase-backed data.",
-    image: "/tranzac-finance-app-ui.jpg",
-    architecture: ["Flutter mobile UI", "eSewa + Khalti payments", "Firebase data", "Budgets and debt records"],
-    implemented: ["Category budgets with expense logging and limit alerts.", "Borrowing and lending records, repayment tracking, and payment-gateway access."],
-    results: ["The report describes these finance-management features, but gives no measured outcome.", "The planned machine-learning budget analysis was not trained, and incoming-money tracking was not implemented."],
-  },
-  {
-    title: "RightMeal Fitness Planner",
-    tech: "C++, Qt, MySQL",
-    description:
-      "A desktop app that calculates BMI, body fat, and maintenance calories to create diet plans with foods available in Nepal, alongside exercise guides.",
-    image: "/rightmeal-fitness-app-nepal.jpg",
-    architecture: ["Qt desktop UI", "C++ calculators and diet logic", "MySQL profile data", "Diet plan + exercise pages"],
-    implemented: ["Account and profile screens; BMI, body-fat, and maintenance-calorie calculators.", "Diet plans with meal calories and macronutrients using foods available in Nepal, plus exercise instructions."],
-    results: ["The report describes a functioning desktop application.", "Personalized workout plans were not completed; users instead choose from exercise pages."],
-  },
-  {
-    title: "R.S. Craftmandu E-commerce",
-    tech: "React, Vite, Tailwind CSS, Redux, Firebase",
-    description:
-      "An online store with product browsing, a shopping cart, order placement, and admin screens for managing products and orders.",
-    image: "/modern-ecommerce-showcase.png",
-    architecture: ["React + Vite storefront", "Redux cart", "Firebase authentication + Firestore", "Orders + admin dashboard"],
-    implemented: ["Product browsing, search and categories, product detail pages, and a cart that persists in local storage.", "Order submission to Firestore, customer order history, and admin product/order screens."],
-    results: ["The source contains storefront and order-management flows; no sales or performance results were supplied.", "A payment-gateway integration is not evidenced in the provided code."],
-  },
-  {
-    title: "Voice Gender Classification",
-    tech: "Python, librosa, DSP, scikit-learn, Random Forest",
-    description:
-      "Extracted voice features with digital signal processing and trained a Random Forest classifier for microphone-based predictions.",
-    image: "/voice-classification-dsp.jpg",
-    architecture: ["Microphone audio", "DSP feature extraction", "Random Forest", "Prediction"],
-    implemented: ["Extracted pitch and spectral features from voice samples and trained a Random Forest model.", "Built a standalone Python application for live microphone input and prediction."],
-    results: ["The report records 100% accuracy on its 200-sample test set (100 female and 100 male samples).", "The report also shows live microphone predictions; broader real-world accuracy is not established."],
-  },
-  {
-    title: "Movie4AllMoods",
-    tech: "Django, PostgreSQL, Bootstrap, pandas, scikit-learn",
-    description:
-      "A movie recommendation site using user ratings and viewing history, with filters for mood, genre, release date, and runtime.",
-    image: "/movie-recommendation-mood-filter.png",
-    link: "https://github.com/aavashlamichhane/Movie4AllMoods",
-    architecture: ["Django web UI", "PostgreSQL movie data", "TF-IDF + cosine similarity", "Ranked recommendations"],
-    implemented: ["Built movie lists, ratings, and filters for mood, genre, release date, and runtime.", "Used pandas and scikit-learn to vectorize genre, cast, and crew and rank similar movies for users."],
-    results: ["The report describes a functional recommendation site; it gives no ranking-quality metric.", "Recommendations are limited to movies stored in its database."],
-  },
-];
-
-const aiMlProjectTitles = new Set([
-  "AI CV Screening",
-  "Brain Tissue Classification",
-  "Pneumonia Detection AI",
-  "Voice Gender Classification",
-  "Image Colorization",
-  "Movie4AllMoods",
-]);
-
-const orderedProjects = [
-  ...projects.filter((project) => aiMlProjectTitles.has(project.title)),
-  ...projects.filter((project) => !aiMlProjectTitles.has(project.title)),
-];
+import { orderedProjects, type Project } from "@/lib/portfolio-content";
 
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
@@ -287,7 +154,7 @@ export function ProjectsSection() {
       
       <div className="max-w-6xl mx-auto text-center mb-10">
         <h2 className="text-5xl font-bold" style={{ fontFamily: "'Thiket'",color: "#00FFFF" }}>
-          Featured Projects
+          Projects
         </h2>
         <p className="mt-4 text-sm tracking-widest text-[#E5E7EB]">{reducedMotion ? "Swipe to explore →" : "Scroll to explore →"}</p>
       </div>

@@ -10,10 +10,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Abhyudit Adhikari - AI/ML Engineer",
+  title: "Abhyudit Adhikari | AI/ML Engineer",
   description:
-    "AI/ML Engineer building LLM systems and computer vision applications, with experience in production AI and IEEE-published research.",
-  generator: "v0.app",
+    "AI/ML Engineer focused on production LLM systems and computer vision. Built cost-efficient shipping AI, evidence-backed CV screening, and IEEE-published assistive navigation research.",
 }
 
 export default function RootLayout({

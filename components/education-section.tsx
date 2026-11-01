@@ -3,22 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-const educationData = [
-  {
-    degree: "Advanced Engineering Program in AI Agent Workflows & Agentic Systems",
-    institution: "IIT Madras Pravartak",
-    period: "Apr 2026 – Nov 2026 (expected)",
-    logo: "/iit.jpg",
-    description: "Intensive program focused on designing enterprise-ready, multi-agent AI systems. The hands-on curriculum centers on integrating APIs with tools like LangChain, implementing Human-in-the-Loop governance, and architecting autonomous workflows for fully deployable projects.",
-  },
-  {
-    degree: "Bachelor of Engineering: Computer Engineering (CGPA: 3.60/4.0)",
-    institution: "Kathmandu University",
-    period: "Feb 2022 – Jul 2026",
-    logo: "/kathmandu_university.jpg",
-    description: "Rigorous syllabus with strong software and mathematical foundation, mastering Data Structures, Algorithms, Database Management, and complex calculus. Specialized in the intersection of hardware and machine learning through advanced electives in Deep Learning, Artificial Intelligence, and IoT.",
-  }
-];
+import { educationData } from "@/lib/portfolio-content";
 
 export function EducationSection() {
   const [mousePosition, setMousePosition] = useState({ x: -1000, y: -1000 });

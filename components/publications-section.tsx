@@ -2,22 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const publication = {
-  title: "Real-Time Assistive Navigation for Visually Impaired Using YOLOv12 and MediaPipe Pose Estimation",
-  status: "IEEE Xplore · 8th International Conference on DSIT 2025",
-  logo: "/ieee.png",
-  description: "A co-authored indoor navigation framework that combines computer vision, natural language processing, voice commands, and spatial audio feedback.",
-  doi: "10.1109/DSIT67006.2025.11389902",
-  paperUrl: "https://ieeexplore.ieee.org/document/11389902",
-  codeUrl: "https://github.com/santoshyadav-29/Deerhack_2025",
-  achievements: [
-    "Integrated YOLOv12 for precise real-time object detection and MediaPipe for human pose estimation.",
-    "Developed a natural voice command interface and spatial audio feedback system for intuitive object localization.",
-    "Achieved 94.7% detection accuracy across diverse indoor environments.",
-    "Optimized the pipeline to maintain a low 1.2-second response latency for real-time usability.",
-  ],
-  skills: ["YOLOv12", "MediaPipe", "Computer Vision", "Spatial Audio", "Natural Language Processing"],
-};
+import { publication } from "@/lib/portfolio-content";
 
 export function PublicationsSection() {
   const [mousePosition, setMousePosition] = useState({ x: -1000, y: -1000 });
@@ -92,7 +77,7 @@ export function PublicationsSection() {
             className="text-5xl md:text-5xl font-bold mb-6"
             style={{ fontFamily: "'Thiket'", color: "#00FFFF" }}
           >
-            Research & Publications
+            Research
           </h2>
           <p className="text-xl" style={{ color: "#E5E7EB" }}>
             Advancing accessibility through Computer Vision and Deep Learning.

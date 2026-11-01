@@ -1,58 +1,7 @@
 // Add useEffect and useRef to your imports
 import { useState, useEffect, useRef } from "react";
 
-// Define the skills categorized for rendering
-const skillCategories = [
-  {
-    title: "Languages",
-    skills: [
-      { name: "Python", description: "Primary language for ML development, data analysis, and backend services." },
-      { name: "C++", description: "Efficient language for performance-critical applications and systems programming." },
-      { name: "SQL", description: "Proficient in database design, querying, and data manipulation." },
-      { name: "TypeScript", description: "Typed JavaScript for web applications and user interfaces." },
-    ]
-  },
-  {
-    title: "AI & Machine Learning",
-    skills: [
-      { name: "PyTorch", description: "Core deep learning framework for building and training neural networks." },
-      { name: "TensorFlow", description: "Experience in building and deploying machine learning models." },
-      { name: "OpenCV", description: "Library for computer vision tasks like image processing and object detection." },
-      { name: "RAG Pipelines", description: "Building Retrieval-Augmented Generation systems for LLMs." },
-      { name: "LLM APIs (Gemini, OpenAI)", description: "Integrating state-of-the-art large language models into applications." },
-      { name: "CNNs", description: "Deep learning architecture specialized for image and spatial data processing." },
-      { name: "MediaPipe", description: "Landmark and pose estimation for computer vision applications." },
-      { name: "YOLO", description: "Object detection for computer vision applications." },
-      { name: "Hugging Face", description: "Model hosting and inference workflows." },
-      { name: "Scikit-learn", description: "Classical machine learning and data processing." },
-      { name: "NumPy", description: "Numerical computing with arrays." },
-      { name: "pandas", description: "Data manipulation and analysis." },
-      { name: "LangChain", description: "Framework for building LLM workflows." },
-      { name: "LangGraph", description: "Framework for stateful agent workflows." },
-    ]
-  },
-  {
-    title: "Tools & Frameworks",
-    skills: [
-      { name: "FastAPI", description: "Modern, high-performance web framework for building APIs with Python." },
-      { name: "Docker", description: "Containerization tool for consistent deployment across different environments." },
-      { name: "Git", description: "Essential tool for version control and collaborative development." },
-      { name: "Supabase", description: "Backend-as-a-service for database, auth, and real-time features." },
-      { name: "Vector Databases", description: "Storing and searching high-dimensional embeddings for AI applications." },
-      { name: "AWS", description: "Cloud platform for deploying and scaling machine learning workloads." },
-      { name: "PostgreSQL", description: "Relational database used in application backends." },
-      { name: "pgvector", description: "Vector search in PostgreSQL." },
-      { name: "Redis", description: "Caching and background-work infrastructure." },
-      { name: "Next.js", description: "React framework for web applications." },
-      { name: "Vercel KV", description: "Key-value caching for web applications." },
-      { name: "GitHub Actions", description: "Continuous integration workflows." },
-      { name: "pytest", description: "Python test automation." },
-    ]
-  }
-];
-
-// Flat list for easy searching of descriptions
-const allSkills = skillCategories.flatMap(category => category.skills);
+import { skillCategories, allSkills } from "@/lib/portfolio-content";
 
 export function AboutSection() {
   const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
@@ -137,15 +86,16 @@ export function AboutSection() {
                 <span style={{ color: "#00FFFF", fontWeight: "600" }}>
                   AI/ML Engineer
                 </span>{" "}
-                who builds AI systems that hold up in real products. At NAVIO, I
-                migrated a live shipping platform's LLM workflows from OpenAI to
-                Gemini, combining model routing, caching, and concurrency controls to{" "}
+                who ships LLM systems to production. At NAVIO, I migrated shipment
+                email parsing from OpenAI to Gemini, using model routing, Redis
+                caching, and database locking to{" "}
                 <span style={{ color: "#9F2B68", fontWeight: "600" }}>
-                  cut inference costs by about 90%
+                  cut LLM costs by about 90%
                 </span>. I also built vision-based extraction for complex bills of lading.
               </p>
               <p>
-                My computer vision work spans research and deployment. At Dr. Fish,
+                My computer vision work spans research and deployment. At the
+                award-recognized Dr. Fish startup,
                 I trained a TensorFlow ResNet50 disease classifier to 95% accuracy,
                 deployed it on Hugging Face, and reduced inference latency from
                 200 ms to 120 ms. I also co-authored IEEE-published research on
@@ -153,9 +103,11 @@ export function AboutSection() {
                 and spatial audio.
               </p>
               <p>
-                Today, I am building an evidence-backed CV screening system at
-                Infinite Computer Solutions and leading AI work on a posture-estimation
-                tool at CreoTech. Across computer vision, RAG, and LLM integration,
+                Most recently, I built an evidence-backed CV screening system during
+                my time at Infinite Computer Solutions. It matches more than
+                1,000 CVs against multiple roles and flags candidates who fit several
+                positions. I also lead AI work on a posture-estimation tool at CreoTech.
+                Across computer vision, RAG, and LLM integration,
                 I focus on the full path from model to reliable workflow: data,
                 evaluation, APIs, deployment, and human review. I am especially
                 interested in{" "}
@@ -164,13 +116,22 @@ export function AboutSection() {
                 </span>{" "}
                 built with tools such as FastAPI and Docker.
               </p>
+              <p>
+                I earned a Bachelor of Engineering in Computer Engineering from
+                Kathmandu University (Feb 2022–Jul 2026; CGPA 3.60/4.0). I am also
+                completing IIT Madras Pravartak&apos;s Advanced Engineering Program in
+                AI Agent Workflows &amp; Agentic Systems (Apr–Nov 2026, expected).
+                Coursework covers multi-agent collaboration, RAG and context
+                engineering with pgvector and hybrid retrieval, and orchestration
+                and observability with LangChain, LangGraph, and LangSmith.
+              </p>
             </div>
           </div>
 
           {/* Interactive Skills Grid */}
           <div>
             <h3 className="text-4xl font-bold mb-8" style={{fontFamily: "'Thiket'", color: "#E5E7EB" }}>
-              Technical Skills
+              Skills
             </h3>
             
             <div className="space-y-6">

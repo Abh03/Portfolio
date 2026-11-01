@@ -2,117 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const experiences = [
-  {
-    title: "Software Engineer (Traineeship)",
-    company: "Infinite Computer Solutions",
-    period: "08/2026 - Present",
-    logo: "/infinite-computer-solutions-logo.jpg",
-    description: "Full-time enterprise training in full-stack development, data engineering, QA, and applied AI.",
-    achievements: [
-      "Built an AI CV Screening system that screens PDF CVs against approved job descriptions and presents evidence for recruiter review.",
-    ],
-    skills: ["Applied AI", "Full-stack Development", "Data Engineering", "QA"],
-  },
-  {
-    title: "Co-founder & AI Lead",
-    company: "CreoTech",
-    period: "05/2026 - Present",
-    logo: "",
-    description: "Led AI and engineering for an employee-wellbeing platform MVP.",
-    achievements: [
-      "Built a webcam-based posture estimation tool using MediaPipe landmarks and a regression model, with eye-strain reminders and guided exercises.",
-    ],
-    skills: ["Python", "FastAPI", "Next.js", "OpenCV", "MediaPipe"],
-  },
-  {
-    title: "Software Engineer",
-    company: "NAVIO",
-    period: "10/2025 - 02/2026",
-    logo: "/navio.png",
-    description: "Architected and implemented critical AI infrastructure and vision pipelines for maritime logistics automation.",
-    achievements: [
-      "Migrated shipment email parsing from OpenAI to Gemini, cutting LLM costs by ~90% with dynamic model routing, input sanitization, Redis/Vercel KV caching, and atomic DB locking.",
-      "Vision & Extraction: Built Gemini vision-based B/L extraction for Pontus, with per-field bounding boxes for complex maritime documents and extraction in under 30 seconds.",
-      "System Reliability: Designed a fault-tolerant regeneration workflow with soft deletes and rollback logic to prevent data corruption.",
-      "Implemented role-adaptive prompts for freight forwarders, cargo owners, and charterers to align responses with business KPIs.",
-    ],
-    skills: ["Gemini", "AI Infrastructure", "Computer Vision", "System Reliability", "Adaptive AI"],
-  },
-  {
-    title: "Co-founder & ML Engineer",
-    company: "Dr. Fish",
-    period: "02/2024 - 11/2025",
-    logo: "/dr-fish-logo.png",
-    description: "Architected the core AI strategy for an award-winning IoT aquaculture system, focusing on automated disease detection and yield optimization.",
-    achievements: [
-      "Engineered a ResNet50 computer vision model for fish disease classification, driving the core AI strategy for an award-winning IoT aquaculture system designed to boost yield by 35%.",
-      "Developed an end-to-end AI pipeline for real-time fish health monitoring using deep learning.",
-      "Trained the TensorFlow classifier to 95% accuracy, deployed it on Hugging Face, and reduced inference latency from 200 ms to 120 ms.",
-      "Built a FastAPI backend to serve the model to the user-facing app.",
-    ],
-    skills: ["Machine Learning", "ResNet50", "Computer Vision", "IoT", "AgriTech"],
-  },
-  {
-    title: "Co-founder",
-    company: "Yagya InfoTech",
-    period: "06/2024 - Present",
-    logo: "/yagya-infotech-logo.png",
-    description: "Directed data analysis and product feature strategy for an AI-integrated School Management System.",
-    achievements: [
-      "Analyzed market data for developing a feature strategy for an AI-integrated School Management System",
-      "Mentored junior developers and designed professional growth frameworks for the engineering team, improving team delivery by ~20%.",
-    ],
-    skills: ["Data Analysis", "Leadership", "Product Strategy", "AI Integration"],
-  },
-  {
-    title: "Coordinator, Entrepreneurship and Monetization Community",
-    company: "Kathmandu University Computer Club",
-    period: "01/2024 - 01/2025",
-    logo: "/kucc-logo.png",
-    description: "Coordinated a tech idea pitching event partnering with industry leaders to provide mentorship for 10+ early-stage startups.",
-    achievements: [
-      "Forged partnerships with industry leaders to provide mentorship for 10+ early-stage startups.",
-      "Managed event sponsorships and stakeholder relations for a large-scale university tech competition.",
-    ],
-    skills: ["Entrepreneurship", "Community Building", "Startup Mentoring"],
-  },
-  {
-    title: "Sponsorship and Partnership Lead",
-    company: "IT Meet, Kathmandu University",
-    period: "06/2024 - 12/2024",
-    logo: "/it-meet-logo.jpg",
-    description: "Led partnership efforts for one of Nepal's largest tech events, securing support from over 40 tech and non-tech companies.",
-    achievements: [
-      "Secured monetary and in-kind support from 40+ companies.",
-      "Managed corporate relations for a large-scale tech event.",
-    ],
-    skills: ["Partnership Development", "Event Management", "Fundraising"],
-  },
-];
-
-const recognitions = [
-  {
-    title: "Top 7, Digital Innovation in Agriculture and Logistics (DIAL) Accelerator Program",
-    organization: "Aadhyanta Fund Management & Swiss Agency for Development and Cooperation(SDC)",
-    image: "/aadhyanta.jpg",
-  },
-  {
-    title: "Finalist, ICT Award Rising Star 2024 (Dr. Fish)",
-    organization: "ICT Foundation",
-    image: "/ict-award-finalist.png",
-  },
-  {
-    title: "The Duke of Edinburgh's International Award",
-    organization: "The Duke of Edinburgh's International Award Foundation",
-    image: "/duke-of-edinburgh-award.jpg",
-  },
-  {
-    title: "Graduate, Universal Concept of Mental Arithmetic System (UCMAS)",
-    organization: "UCMAS Nepal",
-    image: "/ucmas.png",
-  },
-];
+import { experiences } from "@/lib/portfolio-content";
 
 export function ExperienceSection() {
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
@@ -207,7 +97,7 @@ export function ExperienceSection() {
               className="text-5xl md:text-5xl font-bold mb-6"
               style={{ fontFamily: "'Thiket'", color: "#00FFFF" }}
             >
-              Career Timeline
+              Experience
             </h2>
             <p className="text-xl" style={{ color: "#E5E7EB" }}>
               Building the future through leadership and innovation.
@@ -339,42 +229,6 @@ export function ExperienceSection() {
             </div>
           </div>
 
-          <div className="mt-20">
-            <h3
-              className="text-5xl font-bold text-center mb-8"
-              style={{ fontFamily: "'Thiket'", color: "#00FFFF" }}
-            >
-              Recognitions
-            </h3>
-            <div className="grid md:grid-cols-2 gap-8">
-              {recognitions.map((recognition, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-900 rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,255,255,0.5)]"
-                  style={{
-                    border: "1px solid rgba(182,182,182,0.5)",
-                  }}
-                >
-                  <div className="w-full h-48 overflow-hidden">
-                    <img
-                      src={recognition.image}
-                      alt={recognition.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h4
-                      className="text-lg font-semibold mb-2"
-                      style={{ color: "#E5E7EB" }}
-                    >
-                      {recognition.title}
-                    </h4>
-                    <p style={{ color: "#9CA3AF" }}>{recognition.organization}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>

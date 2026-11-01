@@ -8,11 +8,6 @@ export const skillCategories = [
           "Primary language for ML development, data analysis, and backend services.",
       },
       {
-        name: "C++",
-        description:
-          "Efficient language for performance-critical applications and systems programming.",
-      },
-      {
         name: "SQL",
         description:
           "Proficient in database design, querying, and data manipulation.",
@@ -43,21 +38,6 @@ export const skillCategories = [
           "Library for computer vision tasks like image processing and object detection.",
       },
       {
-        name: "RAG Pipelines",
-        description:
-          "Building Retrieval-Augmented Generation systems for LLMs.",
-      },
-      {
-        name: "LLM APIs (Gemini, OpenAI)",
-        description:
-          "Integrating state-of-the-art large language models into applications.",
-      },
-      {
-        name: "CNNs",
-        description:
-          "Deep learning architecture specialized for image and spatial data processing.",
-      },
-      {
         name: "MediaPipe",
         description:
           "Landmark and pose estimation for computer vision applications.",
@@ -71,23 +51,24 @@ export const skillCategories = [
         description: "Model hosting and inference workflows.",
       },
       {
+        name: "RAG",
+        description: "Retrieval-augmented generation with hybrid retrieval and evidence-backed prompts.",
+      },
+      { name: "pgvector", description: "Vector search in PostgreSQL." },
+      {
+        name: "Gemini/OpenAI APIs",
+        description: "Integrating large language models into applications.",
+      },
+      {
         name: "Scikit-learn",
         description: "Classical machine learning and data processing.",
       },
       { name: "NumPy", description: "Numerical computing with arrays." },
       { name: "pandas", description: "Data manipulation and analysis." },
-      {
-        name: "LangChain",
-        description: "Framework for building LLM workflows.",
-      },
-      {
-        name: "LangGraph",
-        description: "Framework for stateful agent workflows.",
-      },
     ],
   },
   {
-    title: "Tools & Frameworks",
+    title: "Backend & Infra",
     skills: [
       {
         name: "FastAPI",
@@ -95,46 +76,21 @@ export const skillCategories = [
           "Modern, high-performance web framework for building APIs with Python.",
       },
       {
-        name: "Docker",
-        description:
-          "Containerization tool for consistent deployment across different environments.",
-      },
-      {
-        name: "Git",
-        description:
-          "Essential tool for version control and collaborative development.",
-      },
-      {
-        name: "Supabase",
-        description:
-          "Backend-as-a-service for database, auth, and real-time features.",
-      },
-      {
-        name: "Vector Databases",
-        description:
-          "Storing and searching high-dimensional embeddings for AI applications.",
-      },
-      {
-        name: "AWS",
-        description:
-          "Cloud platform for deploying and scaling machine learning workloads.",
-      },
-      {
         name: "PostgreSQL",
         description: "Relational database used in application backends.",
       },
-      { name: "pgvector", description: "Vector search in PostgreSQL." },
       {
         name: "Redis",
         description: "Caching and background-work infrastructure.",
       },
+      {
+        name: "Docker",
+        description:
+          "Containerization tool for consistent deployment across different environments.",
+      },
       { name: "Next.js", description: "React framework for web applications." },
       {
-        name: "Vercel KV",
-        description: "Key-value caching for web applications.",
-      },
-      {
-        name: "GitHub Actions",
+        name: "GitHub Actions CI",
         description: "Continuous integration workflows.",
       },
       { name: "pytest", description: "Python test automation." },
@@ -153,7 +109,7 @@ export const educationData = [
     period: "Apr 2026 – Nov 2026 (expected)",
     logo: "/iit.jpg",
     description:
-      "Intensive program focused on designing enterprise-ready, multi-agent AI systems. The hands-on curriculum centers on integrating APIs with tools like LangChain, implementing Human-in-the-Loop governance, and architecting autonomous workflows for fully deployable projects.",
+      "Coursework: multi-agent collaboration topologies; RAG and context engineering (pgvector, hybrid retrieval); multi-agent orchestration and observability (LangChain, LangGraph, LangSmith).",
   },
   {
     degree: "Bachelor of Engineering: Computer Engineering (CGPA: 3.60/4.0)",
@@ -161,7 +117,7 @@ export const educationData = [
     period: "Feb 2022 – Jul 2026",
     logo: "/kathmandu_university.jpg",
     description:
-      "Rigorous syllabus with strong software and mathematical foundation, mastering Data Structures, Algorithms, Database Management, and complex calculus. Specialized in the intersection of hardware and machine learning through advanced electives in Deep Learning, Artificial Intelligence, and IoT.",
+      "Bachelor of Engineering in Computer Engineering, completed July 2026 with a CGPA of 3.60/4.0.",
   },
 ];
 
@@ -171,91 +127,74 @@ export const publication = {
   status: "IEEE Xplore · 8th International Conference on DSIT 2025",
   logo: "/ieee.png",
   description:
-    "A co-authored indoor navigation framework that combines computer vision, natural language processing, voice commands, and spatial audio feedback.",
+    "Co-authored research on a real-time assistive navigation system that helps visually impaired users locate indoor objects through voice commands and spatial audio feedback.",
   doi: "10.1109/DSIT67006.2025.11389902",
   paperUrl: "https://ieeexplore.ieee.org/document/11389902",
   codeUrl: "https://github.com/santoshyadav-29/Deerhack_2025",
   achievements: [
-    "Integrated YOLOv12 for precise real-time object detection and MediaPipe for human pose estimation.",
-    "Developed a natural voice command interface and spatial audio feedback system for intuitive object localization.",
-    "Achieved 94.7% detection accuracy across diverse indoor environments.",
-    "Optimized the pipeline to maintain a low 1.2-second response latency for real-time usability.",
+    "Integrated YOLOv12 object detection and MediaPipe pose estimation with voice commands and spatial audio feedback.",
+    "Achieved 94.7% detection accuracy with 1.2-second response latency.",
   ],
   skills: [
     "YOLOv12",
     "MediaPipe",
     "Computer Vision",
     "Spatial Audio",
-    "Natural Language Processing",
+    "Voice Commands",
   ],
 };
 
 export const experiences = [
   {
-    title: "Software Engineer (Traineeship)",
-    company: "Infinite Computer Solutions",
-    period: "08/2026 - Present",
-    logo: "/infinite-computer-solutions-logo.jpg",
-    description:
-      "Full-time enterprise training in full-stack development, data engineering, QA, and applied AI.",
-    achievements: [
-      "Built an AI CV Screening system that screens PDF CVs against approved job descriptions and presents evidence for recruiter review.",
-    ],
-    skills: ["Applied AI", "Full-stack Development", "Data Engineering", "QA"],
-  },
-  {
     title: "Co-founder & AI Lead",
     company: "CreoTech",
-    period: "05/2026 - Present",
+    period: "May 2026 – Present · Part-time",
     logo: "",
     description:
-      "Led AI and engineering for an employee-wellbeing platform MVP.",
+      "Led AI and engineering for the MVP of a B2B employee-wellbeing platform.",
     achievements: [
       "Built a webcam-based posture estimation tool using MediaPipe landmarks and a regression model, with eye-strain reminders and guided exercises.",
     ],
     skills: ["Python", "FastAPI", "Next.js", "OpenCV", "MediaPipe"],
   },
   {
+    title: "Software Engineer (Traineeship)",
+    company: "Infinite Computer Solutions",
+    period: "Aug 2026 – Oct 2026 · Full-time",
+    logo: "/infinite-computer-solutions-logo.jpg",
+    description:
+      "Full-time software engineering traineeship focused on an AI CV screening platform.",
+    achievements: [
+      "Built a platform to match a pool of 1,000+ CVs against multiple job descriptions at once, surface candidates who fit several roles, and shortlist top candidates for each role. More details under Projects section.",
+    ],
+    skills: ["FastAPI", "Angular", "PostgreSQL", "Redis", "Celery"],
+  },
+  {
     title: "Software Engineer",
     company: "NAVIO",
-    period: "10/2025 - 02/2026",
+    period: "Oct 2025 – Feb 2026 · Full-time",
     logo: "/navio.png",
     description:
-      "Architected and implemented critical AI infrastructure and vision pipelines for maritime logistics automation.",
+      "Built production LLM workflows and vision-based document extraction for a shipping-industry AI platform.",
     achievements: [
-      "Migrated shipment email parsing from OpenAI to Gemini, cutting LLM costs by ~90% with dynamic model routing, input sanitization, Redis/Vercel KV caching, and atomic DB locking.",
-      "Vision & Extraction: Built Gemini vision-based B/L extraction for Pontus, with per-field bounding boxes for complex maritime documents and extraction in under 30 seconds.",
-      "System Reliability: Designed a fault-tolerant regeneration workflow with soft deletes and rollback logic to prevent data corruption.",
-      "Implemented role-adaptive prompts for freight forwarders, cargo owners, and charterers to align responses with business KPIs.",
+      "Cut LLM costs ~90% by migrating shipment email parsing from OpenAI to Gemini, using dynamic model routing, input sanitization, Redis caching of suggested questions, and atomic DB locking to prevent duplicate inference and race conditions.",
+      "Built Gemini vision-based B/L extraction for the live Pontus shipping chatbot, with per-field bounding boxes on complex maritime documents.",
+      "Implemented role-adaptive prompts for freight forwarders, cargo owners, and charterers, plus a fault-tolerant regeneration workflow with soft deletes and rollback to prevent data corruption.",
     ],
-    skills: [
-      "Gemini",
-      "AI Infrastructure",
-      "Computer Vision",
-      "System Reliability",
-      "Adaptive AI",
-    ],
+    skills: ["Gemini", "Redis", "Computer Vision", "Prompt Engineering", "Database Reliability"],
   },
   {
     title: "Co-founder & ML Engineer",
     company: "Dr. Fish",
-    period: "02/2024 - 11/2025",
+    period: "Feb 2024 – Nov 2025 · Part-time",
     logo: "/dr-fish-logo.png",
     description:
-      "Architected the core AI strategy for an award-winning IoT aquaculture system, focusing on automated disease detection and yield optimization.",
+      "Co-founded an award-recognized aquaculture startup and led its fish-disease classification work.",
     achievements: [
-      "Engineered a ResNet50 computer vision model for fish disease classification, driving the core AI strategy for an award-winning IoT aquaculture system designed to boost yield by 35%.",
-      "Developed an end-to-end AI pipeline for real-time fish health monitoring using deep learning.",
-      "Trained the TensorFlow classifier to 95% accuracy, deployed it on Hugging Face, and reduced inference latency from 200 ms to 120 ms.",
-      "Built a FastAPI backend to serve the model to the user-facing app.",
+      "Trained a TensorFlow ResNet50 fish-disease classifier to 95% accuracy, deployed it on Hugging Face, and reduced inference latency from 200 ms to 120 ms.",
+      "Built the FastAPI backend that served the model to the user-facing app. Dr. Fish was an ICT Award 2024 finalist and a Top 7 DIAL accelerator participant (Swiss Agency for Development and Cooperation).",
     ],
-    skills: [
-      "Machine Learning",
-      "ResNet50",
-      "Computer Vision",
-      "IoT",
-      "AgriTech",
-    ],
+    skills: ["TensorFlow", "ResNet50", "Hugging Face", "FastAPI", "Computer Vision"],
   },
   {
     title: "Co-founder",
@@ -305,14 +244,12 @@ export const experiences = [
 
 export const recognitions = [
   {
-    title:
-      "Top 7, Digital Innovation in Agriculture and Logistics (DIAL) Accelerator Program",
-    organization:
-      "Aadhyanta Fund Management & Swiss Agency for Development and Cooperation(SDC)",
+    title: "Top 7, DIAL Accelerator Program (Dr. Fish)",
+    organization: "Swiss Agency for Development and Cooperation",
     image: "/aadhyanta.jpg",
   },
   {
-    title: "Finalist, ICT Award Rising Star 2024 (Dr. Fish)",
+    title: "Finalist, ICT Award 2024 (Dr. Fish)",
     organization: "ICT Foundation",
     image: "/ict-award-finalist.png",
   },
@@ -341,50 +278,47 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "AI CV Screening",
-    tech: "Python, FastAPI, Angular/TypeScript, PostgreSQL/pgvector, Redis, Celery, Docker, Gemini",
+    title: "AI CV Screening System",
+    tech: "Python, FastAPI, Angular/TypeScript, PostgreSQL/pgvector, Redis, Celery, Docker, SentenceTransformers, Gemini, pytest",
     description:
-      "A four-stage recruiter platform for approved job descriptions and PDF CVs, with OCR, eligibility rules, hybrid retrieval, citation-verified LLM assessments, versioned scoring, and human-review routing.",
+      "A four-stage CV screening platform that matches 1,000+ CVs against multiple job descriptions, surfaces cross-matches, and shortlists top candidates per job using evidence-backed assessments.",
     image: "/ai-cv-screening.svg",
     link: "https://github.com/Abh03/AI-CV-Screening/",
     architecture: [
-      "Approved JD + PDF CVs",
-      "OCR and text extraction",
-      "Eligibility + hybrid retrieval",
-      "Cited LLM assessment",
-      "Recruiter review",
+      "Multiple JDs + 1,000+ PDF CVs",
+      "PDF OCR + eligibility rules",
+      "Hybrid pgvector/full-text retrieval",
+      "Fused and reranked evidence",
+      "Cited LLM assessment + human review",
     ],
     implemented: [
-      "Versioned job requirements, single-CV and campaign intake, and OCR fallback with Tesseract and Poppler for scanned PDFs.",
-      "SentenceTransformer embeddings in pgvector plus full-text search, reciprocal-rank fusion, and CrossEncoder reranking.",
-      "Citation checks, versioned scoring, saved recruiter decisions, exports, and Redis/Celery background work.",
+      "Built PDF OCR, eligibility rules, and hybrid pgvector/full-text retrieval, then fused and reranked evidence to shortlist up to 15 candidates per job.",
+      "Added citation-verified LLM assessments, versioned scoring, human-review routing, and recoverable Celery workflows with quota controls.",
+      "Built GitHub Actions CI covering tests, migrations, and Docker image builds.",
     ],
     results: [
-      "Limits model assessment to at most 15 candidates per job; unsupported or incomplete assessments go to human review.",
-      "No screening-accuracy benchmark is reported.",
+      "Shortlists up to 15 candidates per job and surfaces cross-matches across roles.",
+      "Cut estimated LLM input tokens by 61.8% across 12 offline cases through evidence-preserving prompt compaction.",
     ],
   },
   {
-    title: "Brain Tissue Classification",
-    tech: "Python, TensorFlow/Keras, HybridSN",
+    title: "Brain Tissue Classification using Hyperspectral Imaging",
+    tech: "HybridSN, Spectral Attention, Hyperspectral Imaging",
     description:
-      "Ongoing research classifying healthy and tumorous brain tissue with spectral-attention HybridSN, HSI calibration, normalization, patch extraction, and a reported 94% F1-score.",
+      "Ongoing research using HybridSN with spectral attention for brain tissue classification, achieving a 94% F1-score with an HSI calibration, normalization, and patch-extraction pipeline.",
     image: "/brain-hyperspectral-neural-network.jpg",
     architecture: [
-      "HISTOLOGY HSI-GB images",
+      "Hyperspectral brain tissue images",
       "Calibrate and normalize",
       "Extract spectral-spatial patches",
       "HybridSN + spectral attention",
       "Tissue class",
     ],
     implemented: [
-      "A TensorFlow/Keras HybridSN model that learns spatial and spectral features.",
-      "Patch-based preprocessing and data loading for memory-constrained training.",
+      "Implemented HybridSN with spectral attention for brain tissue classification.",
+      "Designed a data pipeline for efficient HSI calibration, normalization, and patch extraction across complex datasets.",
     ],
-    results: [
-      "The report records 93.54% accuracy and a 94% test F1-score on healthy versus tumorous tissue.",
-      "Further validation on larger, more diverse data remains future work.",
-    ],
+    results: ["Ongoing research with a reported 94% F1-score."],
   },
   {
     title: "Pneumonia Detection AI",
@@ -560,8 +494,8 @@ export const projects: Project[] = [
 ];
 
 const aiMlProjectTitles = new Set([
-  "AI CV Screening",
-  "Brain Tissue Classification",
+  "AI CV Screening System",
+  "Brain Tissue Classification using Hyperspectral Imaging",
   "Pneumonia Detection AI",
   "Voice Gender Classification",
   "Image Colorization",

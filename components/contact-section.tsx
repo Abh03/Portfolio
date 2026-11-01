@@ -78,7 +78,7 @@ export function ContactSection() {
 
   const socialLinks = [
     { label: "LinkedIn", url: "https://linkedin.com/in/abhyudit-adhikari", icon: LinkedinIcon },
-    // { label: "GitHub", url: "https://github.com/Abh03", icon: GithubIcon },
+    { label: "GitHub", url: "https://github.com/Abh03/", icon: GithubIcon },
   ];
 
   return (
@@ -210,12 +210,21 @@ export function ContactSection() {
             </div>
           </div>
 
+          <a
+            href="/Abhyudit-Adhikari_AI-ML_Engineer.pdf"
+            download
+            className="mb-12 inline-flex rounded-lg border border-[#00FFFF] px-6 py-3 font-medium text-[#00FFFF] transition-colors hover:bg-cyan-400/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+          >
+            Download CV
+          </a>
+
           {/* Social Links */}
           <div className="flex justify-center gap-6 mb-12">
             {socialLinks.map((social) => (
               <a
                 key={social.label}
                 href={social.url}
+                aria-label={social.label}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-16 h-16 rounded-full flex items-center justify-center text-2xl transition-all duration-300 hover:scale-110"
